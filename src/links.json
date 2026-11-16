@@ -9,5 +9,38 @@
   "mail": {
     "mailto": "hi@ouss.es",
     "subject": "Hi Oussama"
+  },
+  "writings": {
+    "url": "https://ouss.es/#writings"
+  },
+  "posts": {
+    "url": "https://ouss.es/?list=posts"
+  },
+  "rss": {
+    "url": "https://ouss.es/p/rss.xml"
+  },
+  "whereabouts": {
+    "url": "https://ouss.es/#whereabouts"
+  },
+  "now": {
+    "url": "https://ouss.es/p/now/"
+  },
+  "resume": {
+    "url": "https://ouss.es/p/resume.pdf"
+  },
+  "in": {
+    "url": "https://www.linkedin.com/in/eoussama"
+  },
+  "behance": {
+    "url": "https://www.behance.net/eoussama"
+  },
+  "figma": {
+    "url": "https://www.figma.com/@eoussama"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/eoussama"
+  },
+  "tip": {
+    "url": "https://paypal.me/OussamaEssamadi"
   }
 }
