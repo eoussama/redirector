@@ -21,15 +21,25 @@ A personal link redirector: a [Cloudflare Worker](https://developers.cloudflare.
 | Request | Response |
 | --- | --- |
 | `/<slug>` | `302` to the link's target (`301` when the link is `permanent`) |
+| `/<slug>.qr` | The link's QR code, an SVG with the logo in the middle |
 | `/` | `302` to [ouss.es](https://ouss.es) |
-| Any other path | `302` to `https://ouss.es/404?from=<slug>` |
+| `/robots.txt`, `/favicon.ico`, `/favicon.svg` | Answered directly, and not counted |
+| Any other path, or an expired link | `302` to `https://ouss.es/404?from=<slug>` |
 | A method other than `GET` or `HEAD` | `405` |
 
-Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/cv?ref=x` → `https://ouss.es/p/cv/?ref=x`). Nested paths such as `/github/repo` don't match a slug.
+Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/github?tab=repositories` → `https://github.com/eoussama?tab=repositories`), except the `qr` key, which marks a scan. Nested paths such as `/github/repo` don't match a slug.
+
+### QR codes
+
+`to.ouss.es/cv.qr` returns a QR code for `to.ouss.es/cv`, ready for a printed CV or a slide. It is an SVG, so it stays sharp at any size, with the logo in the middle; the code uses the highest error correction (level H), so it scans even though the logo covers part of it. The code points to `to.ouss.es/cv?qr`, so scans are counted apart from clicks (outcome `scan`). There is no QR code for an unknown or expired link: its `.qr` address goes to the 404 page, and isn't counted either.
+
+### UTM tags
+
+Links to ouss.es (and its subdomains) get UTM tags, so the portfolio's analytics can tell where a visit came from: `utm_source=to.ouss.es`, `utm_medium=shortlink` (or `qr` for a scan) and `utm_campaign=<slug>`. Tags a link already has are kept, and a request's own tags win. Links to other sites are left as they are.
 
 ## Links
 
-Every entry in `src/links.json` is an object, keyed by its slug: lowercase letters, digits and dashes, starting with a letter or digit.
+Apart from the `$schema` key (which points editors to the schema), every entry in `src/links.json` is an object, keyed by its slug: 1 to 32 lowercase letters, digits and dashes, starting with a letter or digit.
 
 ```json
 {
@@ -40,6 +50,10 @@ Every entry in `src/links.json` is an object, keyed by its slug: lowercase lette
   "cv": {
     "url": "https://ouss.es/p/cv/",
     "permanent": true
+  },
+  "talk": {
+    "url": "https://ouss.es/talks/2026",
+    "expires": "2026-12-31"
   },
   "mail": {
     "mailto": "hi@ouss.es",
@@ -53,16 +67,17 @@ Every entry in `src/links.json` is an object, keyed by its slug: lowercase lette
 | Field | Kind | Description |
 | --- | --- | --- |
 | `url` | web page | The target, an absolute `http` or `https` URL. |
-| `permanent` | web page | Optional. Answer with `301`, which browsers cache, instead of `302`. Only use it for a link whose target will never change. Repeat clicks then skip the Worker, so they are not counted. |
+| `permanent` | web page | Optional. Answer with `301`, which browsers cache, instead of `302`. Only use it for a link whose target will never change. Repeat clicks then skip the Worker, so they are not counted. Can't be combined with `expires`. |
 | `mailto` | email | The recipient's address. |
 | `subject`, `body` | email | Optional. Prefilled subject and body. |
 | `cc`, `bcc` | email | Optional. One address, or a non-empty list of addresses. |
+| `expires` | both | Optional. When the link stops working: a day (`2026-12-31`, which works through that whole day, UTC) or an exact time (`2026-12-31T18:00:00+01:00`). After that, it goes to the 404 page. `pnpm validate` warns about links that have expired. |
 
 To add or change a link, edit `src/links.json` and push to `main`. `pnpm validate` (part of `pnpm check`) rejects a malformed entry before it can be deployed, and [`links.schema.json`](src/links.schema.json) gives editors autocompletion. Both come from one [Zod](https://zod.dev) schema in [`src/lib/schema.ts`](src/lib/schema.ts).
 
 ## Analytics
 
-Each `GET` request writes one data point (`HEAD` requests, from link checkers and monitors, are not counted) to the `redirector_clicks` [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) dataset. It holds the slug, the outcome (`hit`, `miss` or `root`), the visitor's country and the host of the page they came from. **No IP address or user agent is ever recorded** (a referrer that is a bare IP address is left blank too), and Workers Logs and traces are turned off in [`wrangler.jsonc`](wrangler.jsonc) (Cloudflare turns them on by default). Data is kept for 90 days.
+Each `GET` redirect writes one data point (`HEAD` requests, from link checkers and monitors, are not counted, nor are QR code images, `robots.txt` or the favicon) to the `redirector_clicks` [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) dataset. It holds the slug, the outcome (`hit`, `scan` for a QR code scan, `miss`, `expired` or `root`), the visitor's country and the host of the page they came from. **No IP address or user agent is ever recorded** (a referrer that is a bare IP address is left blank too), and Workers Logs and traces are turned off in [`wrangler.jsonc`](wrangler.jsonc) (Cloudflare turns them on by default). Data is kept for 90 days.
 
 | Column | Value |
 | --- | --- |

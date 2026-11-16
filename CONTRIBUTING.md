@@ -56,6 +56,7 @@ Other scripts: `pnpm lint`, `pnpm fix`, `pnpm typecheck`, `pnpm validate` (check
 
 ## Pull Request Guidelines
 
+- The **Check** workflow runs `pnpm check` on every pull request: the same check Workers Builds runs before a deploy.
 - Link the issue your pull request addresses, if any.
 - Keep pull requests small and focused; split unrelated changes into separate pull requests.
 - Update the documentation when your change affects behavior or usage.
