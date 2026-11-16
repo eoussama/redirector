@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { toError, tryCatch } from "@eoussama/core";
 
-import { linksJsonSchema, validateLinks } from "../src/lib/schema.ts";
+import { expiredLinks, linksJsonSchema, validateLinks } from "../src/lib/schema.ts";
 
 
 
@@ -23,10 +23,15 @@ if (error !== null) {
 
 console.log(`✔ links.json: ${Object.keys(links).length} links`);
 
-const committed = await readFile(join(root, "links.schema.json"), "utf8");
+// An expired link is not an error (it redirects to the 404 page), so this warns instead of failing.
+for (const [slug, expires] of expiredLinks(links, Date.now())) {
+  console.warn(`⚠ "${slug}" expired (${expires}): it goes to the 404 page. Remove it or move its date.`);
+}
+
+const [, committed] = await tryCatch(readFile(join(root, "links.schema.json"), "utf8"));
 
 if (committed !== `${JSON.stringify(linksJsonSchema(), null, 2)}\n`) {
-  console.error("✖ links.schema.json is out of date: run `pnpm schema`");
+  console.error("✖ links.schema.json is missing or out of date: run `pnpm schema`");
   process.exit(1);
 }
 

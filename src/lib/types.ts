@@ -1,7 +1,7 @@
 import type { TBrand } from "@eoussama/core";
 import type * as z from "zod/mini";
 
-import type { linkSchema, linksSchema, mailtoLinkSchema, urlLinkSchema } from "./schema.ts";
+import type { linksSchema, mailtoLinkSchema } from "./schema.ts";
 
 
 
@@ -10,20 +10,16 @@ import type { linkSchema, linksSchema, mailtoLinkSchema, urlLinkSchema } from ".
  */
 export type TSlug = TBrand<string, "Slug">;
 
-/** A link to a web page. */
-export type TUrlLink = z.infer<typeof urlLinkSchema>;
-
 /** A link that opens a prefilled email. */
 export type TMailtoLink = z.infer<typeof mailtoLinkSchema>;
-
-export type TLink = z.infer<typeof linkSchema>;
 
 export type TLinks = Readonly<z.infer<typeof linksSchema>>;
 
 /**
- * What a request resolved to: a known slug, an unknown one, or the bare root.
+ * What a request resolved to: a known slug (`hit`, or `scan` when it came from a QR code),
+ * an unknown one, a link past its `expires`, or the bare root.
  */
-export type TOutcome = "hit" | "miss" | "root";
+export type TOutcome = "hit" | "scan" | "miss" | "expired" | "root";
 
 export interface TResolution {
   readonly slug: TSlug;
