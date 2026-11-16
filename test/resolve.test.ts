@@ -1,27 +1,32 @@
-import type { TLinks } from "../src/lib/types.ts";
+import type { TLinks, TSlug } from "../src/lib/types.ts";
 
 import { describe, expect, it } from "vitest";
 
-import { forwardQuery, HOME_URL, resolve } from "../src/lib/resolve.ts";
+import { findLink, forwardQuery, HOME_URL, resolve, withUtm } from "../src/lib/resolve.ts";
 
 
 
 const links: TLinks = {
-  "cv": { url: "https://ouss.es/p/cv/" },
-  "github": { url: "https://github.com/eoussama", permanent: true },
-  "search": { url: "https://example.com/find?q=default&lang=en" },
-  "mail": { mailto: "hi@ouss.es", subject: "Hi Oussama" },
-  "constructor-like": { url: "https://ouss.es/x" },
+  cv: { url: "https://ouss.es/p/cv/" },
+  github: { url: "https://github.com/eoussama", permanent: true },
+  search: { url: "https://example.com/find?q=default&lang=en" },
+  mail: { mailto: "hi@ouss.es", subject: "Hi Oussama" },
+  event: { url: "https://example.com/event", expires: "2026-11-20" },
+  launch: { url: "https://example.com/launch", expires: "2026-11-20T18:00:00+01:00" },
 };
+
+/** The portfolio CV's URL with the tags a click adds. */
+const CV = "https://ouss.es/p/cv/?utm_source=to.ouss.es&utm_medium=shortlink&utm_campaign=cv";
 
 /**
  * Resolve a URL on the redirector's host.
  *
  * @param path - The path and query
+ * @param now - The time to resolve at, in milliseconds since the epoch (defaults to now)
  * @returns The resolution
  */
-function at(path: string): ReturnType<typeof resolve> {
-  return resolve(new URL(path, "https://to.ouss.es"), links);
+function at(path: string, now?: number): ReturnType<typeof resolve> {
+  return resolve(new URL(path, "https://to.ouss.es"), links, now);
 }
 
 describe("resolve", () => {
@@ -30,7 +35,7 @@ describe("resolve", () => {
   });
 
   it("redirects a known slug with 302", () => {
-    expect(at("/cv")).toMatchObject({ outcome: "hit", status: 302, location: "https://ouss.es/p/cv/" });
+    expect(at("/cv")).toMatchObject({ outcome: "hit", status: 302, location: CV });
   });
 
   it("uses 301 for permanent links", () => {
@@ -38,11 +43,11 @@ describe("resolve", () => {
   });
 
   it("matches case-insensitively and ignores a trailing slash", () => {
-    expect(at("/CV/").location).toBe("https://ouss.es/p/cv/");
+    expect(at("/CV/").location).toBe(CV);
   });
 
   it("forwards the query string, the request's values winning", () => {
-    expect(at("/cv?ref=x").location).toBe("https://ouss.es/p/cv/?ref=x");
+    expect(at("/cv?ref=x").location).toBe(`${CV}&ref=x`);
     expect(at("/search?q=mine&tag=a&tag=b").location).toBe("https://example.com/find?lang=en&q=mine&tag=a&tag=b");
   });
 
@@ -62,6 +67,22 @@ describe("resolve", () => {
     const from = new URL(at(`/${"a".repeat(5000)}`).location).searchParams.get("from");
 
     expect(from).toBe("a".repeat(256));
+  });
+
+  it("counts a QR scan apart, and never passes the marker on", () => {
+    expect(at("/cv?qr")).toMatchObject({ outcome: "scan", location: "https://ouss.es/p/cv/?utm_source=to.ouss.es&utm_medium=qr&utm_campaign=cv" });
+    expect(at("/github?qr&ref=x")).toMatchObject({ outcome: "scan", location: "https://github.com/eoussama?ref=x" });
+    expect(at("/mail?qr").outcome).toBe("scan");
+  });
+
+  it("keeps a day-only link working through that whole day, UTC", () => {
+    expect(at("/event", Date.parse("2026-11-20T23:59:59Z")).outcome).toBe("hit");
+    expect(at("/event", Date.parse("2026-11-21T00:00:00Z"))).toMatchObject({ outcome: "expired", status: 302, location: "https://ouss.es/404?from=event" });
+  });
+
+  it("expires a link at an exact time, with its offset", () => {
+    expect(at("/launch", Date.parse("2026-11-20T16:59:59Z")).outcome).toBe("hit");
+    expect(at("/launch", Date.parse("2026-11-20T17:00:00Z")).outcome).toBe("expired");
   });
 
   it("never matches inherited object keys", () => {
@@ -97,5 +118,45 @@ describe("forwardQuery", () => {
   it("replaces the target's value for a key the request also has", () => {
     expect(forward("?q=new")).toBe("https://a.com/x?z=1&q=new#top");
     expect(forward("?z=2&z=3")).toBe("https://a.com/x?q=a%20b&z=2&z=3#top");
+  });
+});
+
+describe("withUtm", () => {
+  const slug = "cv" as TSlug;
+
+  it("tags links on ouss.es and its subdomains", () => {
+    expect(withUtm("https://ouss.es/p/cv/", slug, "shortlink")).toBe(CV);
+    expect(withUtm("https://blog.ouss.es/post", slug, "qr")).toBe("https://blog.ouss.es/post?utm_source=to.ouss.es&utm_medium=qr&utm_campaign=cv");
+  });
+
+  it("leaves other sites alone, including look-alikes", () => {
+    expect(withUtm("https://github.com/eoussama", slug, "shortlink")).toBe("https://github.com/eoussama");
+    expect(withUtm("https://notouss.es/x", slug, "shortlink")).toBe("https://notouss.es/x");
+    expect(withUtm("https://ouss.es.evil.com/x", slug, "shortlink")).toBe("https://ouss.es.evil.com/x");
+  });
+
+  it("keeps tags the link already has, and its own query as written", () => {
+    expect(withUtm("https://ouss.es/x?utm_source=cv-pdf&q=a%20b#top", slug, "shortlink"))
+      .toBe("https://ouss.es/x?utm_source=cv-pdf&q=a%20b&utm_medium=shortlink&utm_campaign=cv#top");
+  });
+
+  it("lets a request's own tags win", () => {
+    expect(at("/cv?utm_source=newsletter").location)
+      .toBe("https://ouss.es/p/cv/?utm_medium=shortlink&utm_campaign=cv&utm_source=newsletter");
+  });
+});
+
+describe("findLink", () => {
+  const noon = Date.parse("2026-11-20T12:00:00Z");
+
+  it("finds a live link, and marks one past its expires", () => {
+    expect(findLink(links, "cv", noon)).toEqual({ link: links.cv, expired: false });
+    expect(findLink(links, "event", noon)?.expired).toBe(false);
+    expect(findLink(links, "event", Date.parse("2026-11-21T00:00:00Z"))?.expired).toBe(true);
+  });
+
+  it("finds nothing for an unknown slug or an inherited key", () => {
+    expect(findLink(links, "nope", noon)).toBeUndefined();
+    expect(findLink(links, "constructor", noon)).toBeUndefined();
   });
 });
