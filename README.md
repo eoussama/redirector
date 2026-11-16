@@ -24,7 +24,7 @@ A personal link redirector: a [Cloudflare Worker](https://developers.cloudflare.
 | `/<slug>.qr` | The link's QR code, an SVG with the logo in the middle |
 | `/` | `302` to [ouss.es](https://ouss.es) |
 | `/robots.txt`, `/favicon.ico`, `/favicon.svg` | Answered directly, and not counted |
-| Any other path, or an expired link | `302` to `https://ouss.es/404?from=<slug>` |
+| Any other path, or an expired link | `302` to `https://ouss.es/404?from=/<slug>` (the portfolio's 404 page shows it as the address asked for) |
 | A method other than `GET` or `HEAD` | `405` |
 
 Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/github?tab=repositories` → `https://github.com/eoussama?tab=repositories`), except the `qr` key, which marks a scan. Nested paths such as `/github/repo` don't match a slug.

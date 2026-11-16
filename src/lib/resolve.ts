@@ -28,7 +28,8 @@ const FROM_BYTES = 256;
 function notFound(slug: TSlug): string {
   const fallback = new URL(NOT_FOUND_URL);
 
-  fallback.searchParams.set("from", truncateBytes(slug, FROM_BYTES));
+  // The 404 page shows `ouss.es` followed by `from`, so it is passed as a path.
+  fallback.searchParams.set("from", `/${truncateBytes(slug, FROM_BYTES)}`);
 
   return fallback.href;
 }

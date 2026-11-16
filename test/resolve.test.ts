@@ -56,17 +56,17 @@ describe("resolve", () => {
   });
 
   it("sends unknown slugs to the portfolio's 404 page", () => {
-    expect(at("/nope")).toMatchObject({ slug: "nope", outcome: "miss", status: 302, location: "https://ouss.es/404?from=nope" });
+    expect(at("/nope")).toMatchObject({ slug: "nope", outcome: "miss", status: 302, location: "https://ouss.es/404?from=%2Fnope" });
   });
 
   it("treats nested paths as unknown", () => {
-    expect(at("/github/redirector").location).toBe("https://ouss.es/404?from=github%2Fredirector");
+    expect(at("/github/redirector").location).toBe("https://ouss.es/404?from=%2Fgithub%2Fredirector");
   });
 
   it("caps the slug passed on to the 404 page", () => {
     const from = new URL(at(`/${"a".repeat(5000)}`).location).searchParams.get("from");
 
-    expect(from).toBe("a".repeat(256));
+    expect(from).toBe(`/${"a".repeat(256)}`);
   });
 
   it("counts a QR scan apart, and never passes the marker on", () => {
@@ -77,7 +77,7 @@ describe("resolve", () => {
 
   it("keeps a day-only link working through that whole day, UTC", () => {
     expect(at("/event", Date.parse("2026-11-20T23:59:59Z")).outcome).toBe("hit");
-    expect(at("/event", Date.parse("2026-11-21T00:00:00Z"))).toMatchObject({ outcome: "expired", status: 302, location: "https://ouss.es/404?from=event" });
+    expect(at("/event", Date.parse("2026-11-21T00:00:00Z"))).toMatchObject({ outcome: "expired", status: 302, location: "https://ouss.es/404?from=%2Fevent" });
   });
 
   it("expires a link at an exact time, with its offset", () => {

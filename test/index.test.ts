@@ -61,7 +61,7 @@ describe("worker", () => {
     const response = await call("/does-not-exist");
 
     expect(response.status).toBe(302);
-    expect(response.headers.get("Location")).toBe("https://ouss.es/404?from=does-not-exist");
+    expect(response.headers.get("Location")).toBe("https://ouss.es/404?from=%2Fdoes-not-exist");
   });
 
   it("answers HEAD like GET, without counting a click", async () => {
@@ -127,7 +127,7 @@ describe("worker", () => {
     const response = await call("/nope.qr");
 
     expect(response.status).toBe(302);
-    expect(response.headers.get("Location")).toBe("https://ouss.es/404?from=nope");
+    expect(response.headers.get("Location")).toBe("https://ouss.es/404?from=%2Fnope");
     expect(write).not.toHaveBeenCalled();
   });
 
@@ -139,7 +139,7 @@ describe("worker", () => {
       const response = await call(path);
 
       expect(response.status).toBe(302);
-      expect(response.headers.get("Location")).toBe(`https://ouss.es/404?from=${encodeURIComponent(from)}`);
+      expect(response.headers.get("Location")).toBe(`https://ouss.es/404?from=${encodeURIComponent(`/${from}`)}`);
     }
 
     expect(write).not.toHaveBeenCalled();
@@ -148,7 +148,7 @@ describe("worker", () => {
   it("treats a bare /.qr as an unknown path, not the root's QR code", async () => {
     const response = await call("/.qr");
 
-    expect(response.headers.get("Location")).toBe("https://ouss.es/404?from=.qr");
+    expect(response.headers.get("Location")).toBe("https://ouss.es/404?from=%2F.qr");
   });
 
   it("counts a scan as a scan", async () => {
