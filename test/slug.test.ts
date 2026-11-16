@@ -35,7 +35,7 @@ describe("normalizeSlug", () => {
     expect(normalizeSlug("/a%2Fb")).toBe("a/b");
   });
 
-  it("decodes percent-encoding, and keeps malformed input as is", () => {
+  it("decodes percent-encoding, and only lowercases malformed input", () => {
     expect(normalizeSlug("/%43V")).toBe("cv");
     expect(normalizeSlug("/%E0%A4%A")).toBe("%e0%a4%a");
   });
