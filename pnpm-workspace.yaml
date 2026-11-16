@@ -1,0 +1,16 @@
+minimumReleaseAgeExcludePrune: true
+trustPolicy: no-downgrade
+shellEmulator: true
+# Patched versions of packages that come in only through dev tooling, for `pnpm audit`:
+# the lint toolchain (@eoussama/dx → eslint): GHSA-g3hv-75wg-m249, GHSA-238p-pmpm-9mq7;
+# the test runtime (@cloudflare/vitest-pool-workers → miniflare), which pins older versions.
+overrides:
+  katex@>=0.11.0 <0.18.2: ^0.18.2
+  minimatch@>=7.0.0 <11.0.1: ^11.0.1
+  sharp@<0.35.5: ^0.35.5
+  undici@>=7.0.0 <7.30.1: ^7.30.1
+  zod@>=4.0.0 <4.6.6: ^4.6.6
+# Native binaries that Wrangler and Vitest need: the bundler and the Workers runtime.
+allowBuilds:
+  esbuild: true
+  workerd: true
