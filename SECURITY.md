@@ -10,7 +10,7 @@ Please **do not** report security vulnerabilities through public issues, discuss
 
 Instead, report them privately through GitHub:
 
-1. Go to the [Security Advisories](https://github.com/eoussama/starter/security/advisories/new) page of this repository.
+1. Go to the [Security Advisories](https://github.com/eoussama/redirector/security/advisories/new) page of this repository.
 
 2. Fill out the form with as much detail as possible, including a clear description of the vulnerability, its potential impact, and any steps to reproduce it.
 
