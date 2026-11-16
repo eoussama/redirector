@@ -7,12 +7,13 @@ import { findLink, forwardQuery, HOME_URL, resolve, withUtm } from "../src/lib/r
 
 
 const links: TLinks = {
-  cv: { url: "https://ouss.es/p/cv/" },
-  github: { url: "https://github.com/eoussama", permanent: true },
-  search: { url: "https://example.com/find?q=default&lang=en" },
-  mail: { mailto: "hi@ouss.es", subject: "Hi Oussama" },
-  event: { url: "https://example.com/event", expires: "2026-11-20" },
-  launch: { url: "https://example.com/launch", expires: "2026-11-20T18:00:00+01:00" },
+  "cv": { url: "https://ouss.es/p/cv/" },
+  "github": { url: "https://github.com/eoussama", permanent: true },
+  "search": { url: "https://example.com/find?q=default&lang=en" },
+  "mail": { mailto: "hi@ouss.es", subject: "Hi Oussama" },
+  "event": { url: "https://example.com/event", expires: "2026-11-20" },
+  "launch": { url: "https://example.com/launch", expires: "2026-11-20T18:00:00+01:00" },
+  "github/sewnique": { url: "https://github.com/eoussama/sewnique" },
 };
 
 /** The portfolio CV's URL with the tags a click adds. */
@@ -59,7 +60,11 @@ describe("resolve", () => {
     expect(at("/nope")).toMatchObject({ slug: "nope", outcome: "miss", status: 302, location: "https://ouss.es/404?from=%2Fnope" });
   });
 
-  it("treats nested paths as unknown", () => {
+  it("finds nested links, case-insensitively and with a trailing slash", () => {
+    expect(at("/GitHub/Sewnique/")).toMatchObject({ slug: "github/sewnique", outcome: "hit", location: "https://github.com/eoussama/sewnique" });
+  });
+
+  it("treats nested paths that aren't listed as unknown", () => {
     expect(at("/github/redirector").location).toBe("https://ouss.es/404?from=%2Fgithub%2Fredirector");
   });
 

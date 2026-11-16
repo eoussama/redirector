@@ -55,4 +55,8 @@ describe("qrResponse", () => {
     expect(response.headers.get("X-Robots-Tag")).toBe("noindex");
     expect(response.headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-cv.svg\"");
   });
+
+  it("turns a nested path into a valid file name", () => {
+    expect(qrResponse("<svg/>", "github/core").headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-github-core.svg\"");
+  });
 });

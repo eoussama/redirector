@@ -43,7 +43,8 @@ export function methodNotAllowed(): Response {
  * comes first.
  *
  * @param svg - The QR code
- * @param slug - The link's slug, for the file name when it is saved
+ * @param slug - The link's short path, for the file name when it is saved (`github/dx`
+ *   is saved as `to.ouss.es-github-dx.svg`)
  * @param secondsLeft - Seconds until the link expires (`Infinity` when it never does)
  * @returns The image response
  */
@@ -51,7 +52,7 @@ export function qrResponse(svg: string, slug: string, secondsLeft: number = Numb
   return new Response(svg, {
     headers: {
       "Content-Type": "image/svg+xml",
-      "Content-Disposition": `inline; filename="to.ouss.es-${slug}.svg"`,
+      "Content-Disposition": `inline; filename="to.ouss.es-${slug.replaceAll("/", "-")}.svg"`,
       "Cache-Control": `public, max-age=${Math.max(0, Math.floor(Math.min(DAY_SECONDS, secondsLeft)))}`,
       "X-Robots-Tag": "noindex",
     },

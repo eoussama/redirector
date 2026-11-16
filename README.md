@@ -20,14 +20,16 @@ A personal link redirector: a [Cloudflare Worker](https://developers.cloudflare.
 
 | Request | Response |
 | --- | --- |
-| `/<slug>` | `302` to the link's target (`301` when the link is `permanent`) |
-| `/<slug>.qr` | The link's QR code, an SVG with the logo in the middle |
+| `/<slug>`, `/<slug>/<child>` | `302` to the link's target (`301` when the link is `permanent`) |
+| `/<slug>.qr`, `/<slug>/<child>.qr` | The link's QR code, an SVG with the logo in the middle |
 | `/` | `302` to [ouss.es](https://ouss.es) |
 | `/robots.txt`, `/favicon.ico`, `/favicon.svg` | Answered directly, and not counted |
 | Any other path, or an expired link | `302` to `https://ouss.es/404?from=/<slug>` (the portfolio's 404 page shows it as the address asked for) |
 | A method other than `GET` or `HEAD` | `405` |
 
-Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/github?tab=repositories` → `https://github.com/eoussama?tab=repositories`), except the `qr` key, which marks a scan. Nested paths such as `/github/repo` don't match a slug.
+Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/github?tab=repositories` → `https://github.com/eoussama?tab=repositories`), except the `qr` key, which marks a scan. Nested paths such as `/github/dx` work when `links.json` defines them; any other nested path goes to the 404 page.
+
+Redirects carry `X-Robots-Tag: noindex`, so search engines don't list them. A `302` is sent with `Cache-Control: private, max-age=0`, so a changed link takes effect at once; a `301` is left for browsers to cache. QR code images are cached for a day, or until their link expires if that comes sooner.
 
 ### QR codes
 
@@ -39,30 +41,37 @@ Links to ouss.es (and its subdomains) get UTM tags, so the portfolio's analytics
 
 ## Links
 
-Apart from the `$schema` key (which points editors to the schema), every entry in `src/links.json` is an object, keyed by its slug: 1 to 32 lowercase letters, digits and dashes, starting with a letter or digit.
+`src/links.json` is a tree. Each key in it is one of three things:
+
+- **A link field** (`url`, `mailto` and the fields below): the link at that spot.
+- **A child**: lowercase letters, digits and dashes, starting with a letter or digit. It adds a part to the short path, so `github` → `dx` is `to.ouss.es/github/dx`. A key can be a link and hold children at the same time, or only hold children (then its own path has no link).
+- **A group**, in parentheses like `(design)`: it only organizes the file and never appears in the URL, so `(design)` → `dribbble` is still `to.ouss.es/dribbble`.
 
 ```json
 {
   "$schema": "./links.schema.json",
+  "(portfolio)": {
+    "cv": { "url": "https://ouss.es/p/cv/" },
+    "talk": { "url": "https://ouss.es/talks/2026", "expires": "2026-12-31" }
+  },
   "github": {
-    "url": "https://github.com/eoussama"
+    "url": "https://github.com/eoussama",
+    "dx": { "url": "https://github.com/eoussama/dx" }
   },
-  "cv": {
-    "url": "https://ouss.es/p/cv/",
-    "permanent": true
+  "(design)": {
+    "dribbble": {
+      "url": "https://dribbble.com/EOussama",
+      "dx-logo": { "url": "https://dribbble.com/shots/27890164-DX-Logo" }
+    }
   },
-  "talk": {
-    "url": "https://ouss.es/talks/2026",
-    "expires": "2026-12-31"
+  "npm": {
+    "dx": { "url": "https://www.npmjs.com/package/@eoussama/dx" }
   },
-  "mail": {
-    "mailto": "hi@ouss.es",
-    "subject": "Hi Oussama",
-    "body": "Hello!",
-    "cc": ["someone@example.com"]
-  }
+  "mail": { "mailto": "hi@ouss.es", "subject": "Hi Oussama" }
 }
 ```
+
+That gives `to.ouss.es/cv`, `/talk`, `/github`, `/github/dx`, `/dribbble`, `/dribbble/dx-logo`, `/npm/dx` and `/mail`. `/npm` alone has no link, so it goes to the 404 page. A whole short path can be at most 32 characters (it keeps QR codes small and reliable), and the same path can't be defined twice, even through different groups. Only the paths written in the file exist: `to.ouss.es/github/anything-else` goes to the 404 page.
 
 | Field | Kind | Description |
 | --- | --- | --- |
@@ -73,7 +82,7 @@ Apart from the `$schema` key (which points editors to the schema), every entry i
 | `cc`, `bcc` | email | Optional. One address, or a non-empty list of addresses. |
 | `expires` | both | Optional. When the link stops working: a day (`2026-12-31`, which works through that whole day, UTC) or an exact time (`2026-12-31T18:00:00+01:00`). After that, it goes to the 404 page. `pnpm validate` warns about links that have expired. |
 
-To add or change a link, edit `src/links.json` and push to `main`. `pnpm validate` (part of `pnpm check`) rejects a malformed entry before it can be deployed, and [`links.schema.json`](src/links.schema.json) gives editors autocompletion. Both come from one [Zod](https://zod.dev) schema in [`src/lib/schema.ts`](src/lib/schema.ts).
+To add or change a link, edit `src/links.json` and push to `main`. `pnpm validate` (part of `pnpm check`) rejects a malformed entry before it can be deployed, listing every problem at once with where it is in the file (such as `(design).dribbble.url`), and [`links.schema.json`](src/links.schema.json) gives editors autocompletion. Both come from one [Zod](https://zod.dev) schema in [`src/lib/schema.ts`](src/lib/schema.ts).
 
 ## Analytics
 

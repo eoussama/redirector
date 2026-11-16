@@ -1,131 +1,179 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Redirector links",
-  "description": "The links served at to.ouss.es, keyed by slug.",
+  "description": "The links served at to.ouss.es. A key extends the short path (github → dx is to.ouss.es/github/dx); a key in parentheses, like (design), only groups.",
   "type": "object",
-  "propertyNames": {
-    "anyOf": [
-      {
-        "const": "$schema"
-      },
-      {
-        "type": "string",
-        "pattern": "^[a-z0-9][a-z0-9-]{0,31}$"
-      }
-    ]
-  },
-  "additionalProperties": {
-    "anyOf": [
-      {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string",
-            "pattern": "^https?:\\/\\/",
-            "description": "The target, an absolute http or https URL."
-          },
-          "permanent": {
-            "type": "boolean",
-            "description": "Answer with 301 (cached by browsers) instead of 302."
-          },
-          "expires": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
-              },
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              }
-            ],
-            "description": "When the link stops working: a day (it works through that whole day, UTC) or an exact time. After that, it goes to the 404 page."
-          }
-        },
-        "required": [
-          "url"
-        ],
-        "additionalProperties": false
-      },
-      {
-        "type": "object",
-        "properties": {
-          "mailto": {
-            "type": "string",
-            "format": "email",
-            "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
-            "description": "The recipient's address."
-          },
-          "expires": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
-              },
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              }
-            ],
-            "description": "When the link stops working: a day (it works through that whole day, UTC) or an exact time. After that, it goes to the 404 page."
-          },
-          "subject": {
-            "type": "string"
-          },
-          "body": {
-            "type": "string"
-          },
-          "cc": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "email",
-                "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-              },
-              {
-                "minItems": 1,
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "email",
-                  "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-                }
-              }
-            ]
-          },
-          "bcc": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "email",
-                "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-              },
-              {
-                "minItems": 1,
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "email",
-                  "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-                }
-              }
-            ]
-          }
-        },
-        "required": [
-          "mailto"
-        ],
-        "additionalProperties": false
-      }
-    ]
-  },
   "properties": {
     "$schema": {
       "type": "string"
+    }
+  },
+  "patternProperties": {
+    "^(?!(?:url|permanent|expires|mailto|subject|body|cc|bcc)$)[a-z0-9][a-z0-9-]*$": {
+      "$ref": "#/$defs/node"
+    },
+    "^\\([a-z0-9][a-z0-9-]*\\)$": {
+      "$ref": "#/$defs/group"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "node": {
+      "type": "object",
+      "description": "A link (url, or mailto for an email), links under it, or both.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https?:\\/\\/",
+          "description": "The target, an absolute http or https URL.",
+          "format": "uri"
+        },
+        "permanent": {
+          "type": "boolean",
+          "description": "Answer with 301 (cached by browsers) instead of 302."
+        },
+        "expires": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            }
+          ],
+          "description": "When the link stops working: a day (it works through that whole day, UTC) or an exact time. After that, it goes to the 404 page."
+        },
+        "mailto": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+          "description": "The recipient's address."
+        },
+        "subject": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "cc": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            },
+            {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "email",
+                "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+              }
+            }
+          ]
+        },
+        "bcc": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            },
+            {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "email",
+                "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+              }
+            }
+          ]
+        }
+      },
+      "patternProperties": {
+        "^(?!(?:url|permanent|expires|mailto|subject|body|cc|bcc)$)[a-z0-9][a-z0-9-]*$": {
+          "$ref": "#/$defs/node"
+        },
+        "^\\([a-z0-9][a-z0-9-]*\\)$": {
+          "$ref": "#/$defs/group"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1,
+      "dependentRequired": {
+        "permanent": [
+          "url"
+        ],
+        "subject": [
+          "mailto"
+        ],
+        "body": [
+          "mailto"
+        ],
+        "cc": [
+          "mailto"
+        ],
+        "bcc": [
+          "mailto"
+        ]
+      },
+      "dependentSchemas": {
+        "expires": {
+          "anyOf": [
+            {
+              "required": [
+                "url"
+              ]
+            },
+            {
+              "required": [
+                "mailto"
+              ]
+            }
+          ]
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "url",
+              "mailto"
+            ]
+          },
+          {
+            "required": [
+              "permanent",
+              "expires"
+            ],
+            "properties": {
+              "permanent": {
+                "const": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "group": {
+      "type": "object",
+      "description": "A group: it organizes the links in it without becoming part of their short paths.",
+      "patternProperties": {
+        "^(?!(?:url|permanent|expires|mailto|subject|body|cc|bcc)$)[a-z0-9][a-z0-9-]*$": {
+          "$ref": "#/$defs/node"
+        },
+        "^\\([a-z0-9][a-z0-9-]*\\)$": {
+          "$ref": "#/$defs/group"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
     }
   }
 }
