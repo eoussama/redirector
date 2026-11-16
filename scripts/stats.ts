@@ -90,7 +90,13 @@ if (!response.ok) {
   fail(`Cloudflare answered ${response.status}: ${await response.text()}`);
 }
 
-const { data = [] } = await response.json() as TSqlResponse;
+const [parseError, body] = await tryCatch(response.json() as Promise<TSqlResponse>);
+
+if (parseError !== null) {
+  fail(`Cloudflare's answer could not be read: ${toError(parseError).message}`);
+}
+
+const { data = [] } = body;
 
 console.log(`Clicks over the last ${days} days, by ${values.by}:`);
 

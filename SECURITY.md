@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest release receives security fixes.
+Only the code on `main`, which is what is deployed, receives security fixes.
 
 ## Reporting a Vulnerability
 

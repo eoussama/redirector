@@ -7,7 +7,7 @@ node_modules/
 
 # Build output
 dist/
-build/
+coverage/
 
 # Logs
 *.log
@@ -21,5 +21,6 @@ Thumbs.db
 .vscode/
 *.swp
 
-# Wrangler
+# Wrangler (and its local secrets)
 .wrangler/
+.dev.vars*
