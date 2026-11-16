@@ -1,0 +1,13 @@
+{
+  "$schema": "./links.schema.json",
+  "cv": {
+    "url": "https://ouss.es/p/cv/"
+  },
+  "github": {
+    "url": "https://github.com/eoussama"
+  },
+  "mail": {
+    "mailto": "hi@ouss.es",
+    "subject": "Hi Oussama"
+  }
+}
