@@ -1,46 +1,496 @@
 {
   "$schema": "./links.schema.json",
-  "cv": {
-    "url": "https://ouss.es/p/cv/"
+  "(portfolio)": {
+    "cv": {
+      "url": "https://ouss.es/p/cv/"
+    },
+    "resume": {
+      "url": "https://ouss.es/p/resume.pdf"
+    },
+    "now": {
+      "url": "https://ouss.es/p/now/"
+    },
+    "rss": {
+      "url": "https://ouss.es/p/rss.xml"
+    },
+    "posts": {
+      "url": "https://ouss.es/?list=posts"
+    },
+    "projects": {
+      "url": "https://ouss.es/?list=projects"
+    },
+    "whoami": {
+      "url": "https://ouss.es/#whoami"
+    },
+    "works": {
+      "url": "https://ouss.es/#works"
+    },
+    "writings": {
+      "url": "https://ouss.es/#writings"
+    },
+    "whereabouts": {
+      "url": "https://ouss.es/#whereabouts"
+    }
+  },
+  "(contact)": {
+    "mail": {
+      "mailto": "hi@ouss.es",
+      "subject": "Hi Oussama"
+    },
+    "in": {
+      "url": "https://www.linkedin.com/in/eoussama"
+    },
+    "x": {
+      "url": "https://twitter.com/OussamaEssamadi"
+    }
+  },
+  "(support)": {
+    "sponsor": {
+      "url": "https://github.com/sponsors/eoussama"
+    },
+    "tip": {
+      "url": "https://paypal.me/OussamaEssamadi"
+    },
+    "patreon": {
+      "url": "https://www.patreon.com/EssOussama"
+    },
+    "ko-fi": {
+      "url": "https://ko-fi.com/eoussama"
+    }
   },
   "github": {
-    "url": "https://github.com/eoussama"
+    "url": "https://github.com/eoussama",
+    "anusic-api": {
+      "url": "https://github.com/eoussama/anusic-api"
+    },
+    "circus": {
+      "url": "https://github.com/nakamaorg/circus"
+    },
+    "core": {
+      "url": "https://github.com/eoussama/core"
+    },
+    "cybertown": {
+      "url": "https://github.com/eoussama/cybertown"
+    },
+    "dx": {
+      "url": "https://github.com/eoussama/dx"
+    },
+    "eo-house-system": {
+      "url": "https://github.com/eoussama/eo-house-system"
+    },
+    "eo-textdraw-editor": {
+      "url": "https://github.com/eoussama/eo-textdraw-editor"
+    },
+    "eo-translatorjs": {
+      "url": "https://github.com/eoussama/eo-translatorjs"
+    },
+    "eo-typewriterjs": {
+      "url": "https://github.com/eoussama/eo-typewriterjs"
+    },
+    "fireguard": {
+      "url": "https://github.com/eoussama/fireguard"
+    },
+    "firemitt": {
+      "url": "https://github.com/eoussama/firemitt"
+    },
+    "formatex": {
+      "url": "https://github.com/Southclaws/formatex"
+    },
+    "freego": {
+      "url": "https://github.com/eoussama/freego"
+    },
+    "kol-pt": {
+      "url": "https://github.com/eoussama/kol-pt"
+    },
+    "langkama": {
+      "url": "https://github.com/nakamaorg/langkama"
+    },
+    "langkama-online": {
+      "url": "https://github.com/nakamaorg/langkama-online"
+    },
+    "nakama-realm-vscode": {
+      "url": "https://github.com/nakamaorg/nakama-realm-vscode"
+    },
+    "mal-reviewer": {
+      "url": "https://github.com/eoussama/MAL_Reviewer"
+    },
+    "nitfree": {
+      "url": "https://github.com/eoussama/nitfree"
+    },
+    "no-tion": {
+      "url": "https://github.com/eoussama/no-tion"
+    },
+    "openmp-wiki": {
+      "url": "https://github.com/openmultiplayer/wiki"
+    },
+    "phoshare": {
+      "url": "https://github.com/eoussama/phoshare"
+    },
+    "playback-sync": {
+      "url": "https://github.com/eoussama/playback-sync"
+    },
+    "portfolio": {
+      "url": "https://github.com/eoussama/eoussama.github.io"
+    },
+    "publi-pro-max": {
+      "url": "https://github.com/eoussama/publi-pro-max"
+    },
+    "samp-front": {
+      "url": "https://github.com/eoussama/samp-front"
+    },
+    "steam-mcl": {
+      "url": "https://github.com/eoussama/steam-mcl"
+    },
+    "ma-java": {
+      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet"
+    },
+    "ma-java-backend": {
+      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-backend"
+    },
+    "ma-java-frontend": {
+      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-frontend"
+    },
+    "ma-java-seed": {
+      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-seed"
+    },
+    "temmejs": {
+      "url": "https://github.com/eoussama/temmejs"
+    },
+    "true-drive-core": {
+      "url": "https://github.com/true-drive/core"
+    },
+    "true-drive-cli": {
+      "url": "https://github.com/true-drive/cli"
+    },
+    "umami": {
+      "url": "https://github.com/umami-software/umami"
+    },
+    "vscode-pawn": {
+      "url": "https://github.com/Southclaws/vscode-pawn"
+    },
+    "ysi-includes": {
+      "url": "https://github.com/pawn-lang/YSI-Includes"
+    }
   },
-  "mail": {
-    "mailto": "hi@ouss.es",
-    "subject": "Hi Oussama"
+  "(design)": {
+    "dribbble": {
+      "url": "https://dribbble.com/EOussama",
+      "dx-logo": {
+        "url": "https://dribbble.com/shots/27890164-DX-Logo"
+      },
+      "ijaar": {
+        "url": "https://dribbble.com/shots/27890248-Ijaar"
+      },
+      "nitfree": {
+        "url": "https://dribbble.com/shots/27890228-Nitfree"
+      },
+      "no-tion": {
+        "url": "https://dribbble.com/shots/27890198-no-tion-Prototype"
+      },
+      "plus": {
+        "url": "https://dribbble.com/shots/27890252-Plus"
+      },
+      "pockinv": {
+        "url": "https://dribbble.com/shots/27890223-PockInv"
+      },
+      "eclipse-logo": {
+        "url": "https://dribbble.com/shots/27884363-Eclipse-Logo"
+      },
+      "og-logo": {
+        "url": "https://dribbble.com/shots/16578608-Personal-Branding-Logo"
+      },
+      "portfolio": {
+        "url": "https://dribbble.com/shots/23155702-Portfolio"
+      },
+      "portfolio-redesigns": {
+        "url": "https://dribbble.com/shots/27890243-Portfolio-Redesigns"
+      },
+      "sewnique": {
+        "url": "https://dribbble.com/shots/27890233-Sewnique"
+      }
+    },
+    "behance": {
+      "url": "https://www.behance.net/eoussama",
+      "dx-logo": {
+        "url": "https://www.behance.net/gallery/258506369/DX-Logo"
+      },
+      "ijaar": {
+        "url": "https://www.behance.net/gallery/258508259/Ijaar"
+      },
+      "nitfree": {
+        "url": "https://www.behance.net/gallery/258507745/Nitfree"
+      },
+      "no-tion": {
+        "url": "https://www.behance.net/gallery/258507537/no-tion-prototype"
+      },
+      "plus": {
+        "url": "https://www.behance.net/gallery/258508373/Plus"
+      },
+      "pockinv": {
+        "url": "https://www.behance.net/gallery/258507655/PockInv"
+      },
+      "eclipse-logo": {
+        "url": "https://www.behance.net/gallery/258401211/Eclipse-logo"
+      },
+      "og-logo": {
+        "url": "https://www.behance.net/gallery/128615595/Personal-Branding-Logo"
+      },
+      "portfolio": {
+        "url": "https://www.behance.net/gallery/137829029/Portfolio"
+      },
+      "portfolio-redesigns": {
+        "url": "https://www.behance.net/gallery/258508127/Portfolio-Redesigns"
+      },
+      "sewnique": {
+        "url": "https://www.behance.net/gallery/258507931/Sewnique"
+      }
+    },
+    "figma": {
+      "url": "https://www.figma.com/@eoussama",
+      "eo-textdraw-editor": {
+        "url": "https://www.figma.com/board/IP9Oa986G23BlCsVlT0X4x/EO-TextDraw-Editor"
+      },
+      "ijaar": {
+        "url": "https://www.figma.com/design/eO0u5HpUgwPEEJ8XFZ1y7h/Ijjar--Community-?node-id=32-54"
+      },
+      "playback-sync": {
+        "url": "https://www.figma.com/design/1Mbhhrv2ekwrocLJmk2NUA/Playback-Sync?m=auto"
+      },
+      "portfolio": {
+        "url": "https://www.figma.com/design/XziYl1qcWAUZjj1WppDuqI/Portfolio"
+      },
+      "student-management": {
+        "url": "https://www.figma.com/design/qhEHloFlYyr0oUaFrcFRAc/Student-Management"
+      },
+      "yukiments": {
+        "url": "https://www.figma.com/design/FKYubVgKpHHQpWEMZHtrBk/Yukiments"
+      }
+    }
   },
-  "writings": {
-    "url": "https://ouss.es/#writings"
+  "(packages)": {
+    "npm": {
+      "core": {
+        "url": "https://www.npmjs.com/package/@eoussama/core"
+      },
+      "dx": {
+        "url": "https://www.npmjs.com/package/@eoussama/dx"
+      },
+      "firemitt": {
+        "url": "https://www.npmjs.com/package/@eoussama/firemitt"
+      }
+    },
+    "npmx": {
+      "core": {
+        "url": "https://npmx.dev/package/@eoussama/core"
+      },
+      "dx": {
+        "url": "https://npmx.dev/package/@eoussama/dx"
+      },
+      "firemitt": {
+        "url": "https://npmx.dev/package/@eoussama/firemitt"
+      }
+    },
+    "go": {
+      "freego": {
+        "url": "https://pkg.go.dev/github.com/eoussama/freego"
+      }
+    },
+    "docker": {
+      "true-drive": {
+        "url": "https://hub.docker.com/r/eoussama/true-drive"
+      }
+    },
+    "vscode": {
+      "nakama-realm": {
+        "url": "https://marketplace.visualstudio.com/items?itemName=Eoussama.nakama-realm"
+      }
+    }
   },
-  "posts": {
-    "url": "https://ouss.es/?list=posts"
-  },
-  "rss": {
-    "url": "https://ouss.es/p/rss.xml"
-  },
-  "whereabouts": {
-    "url": "https://ouss.es/#whereabouts"
-  },
-  "now": {
-    "url": "https://ouss.es/p/now/"
-  },
-  "resume": {
-    "url": "https://ouss.es/p/resume.pdf"
-  },
-  "in": {
-    "url": "https://www.linkedin.com/in/eoussama"
-  },
-  "behance": {
-    "url": "https://www.behance.net/eoussama"
-  },
-  "figma": {
-    "url": "https://www.figma.com/@eoussama"
-  },
-  "sponsor": {
-    "url": "https://github.com/sponsors/eoussama"
-  },
-  "tip": {
-    "url": "https://paypal.me/OussamaEssamadi"
+  "(projects)": {
+    "asis": {
+      "url": "https://ouss.es/p/projects/asis/"
+    },
+    "circus": {
+      "url": "https://ouss.es/p/projects/circus/",
+      "live": {
+        "url": "https://nakamaorg.vercel.app/"
+      }
+    },
+    "core": {
+      "url": "https://ouss.es/p/projects/core/"
+    },
+    "crypto-katana": {
+      "url": "https://ouss.es/p/projects/crypto-katana/",
+      "live": {
+        "url": "https://crypto-katana.netlify.app/"
+      }
+    },
+    "cybertown": {
+      "url": "https://ouss.es/p/projects/cybertown/",
+      "live": {
+        "url": "https://cybertown.netlify.app/"
+      }
+    },
+    "dx": {
+      "url": "https://ouss.es/p/projects/dx/"
+    },
+    "eo-house-system": {
+      "url": "https://ouss.es/p/projects/eo-house-system/"
+    },
+    "eo-textdraw-editor": {
+      "live": {
+        "url": "https://eoussama.github.io/eo-textdraw-editor/"
+      }
+    },
+    "eo-translatorjs": {
+      "url": "https://ouss.es/p/projects/eo-translatorjs/",
+      "live": {
+        "url": "https://eo-translatorjs.ouss.es/"
+      }
+    },
+    "eo-typewriterjs": {
+      "url": "https://ouss.es/p/projects/eo-typewriterjs/",
+      "live": {
+        "url": "https://eo-typewriterjs.ouss.es/"
+      }
+    },
+    "farm-planet": {
+      "url": "https://ouss.es/p/projects/farm-planet/",
+      "live": {
+        "url": "https://farm-planet.netlify.app/"
+      }
+    },
+    "fireguard": {
+      "url": "https://ouss.es/p/projects/fireguard/",
+      "live": {
+        "url": "https://ouss.es/firemitt/"
+      }
+    },
+    "formatex": {
+      "url": "https://ouss.es/p/projects/formatex/"
+    },
+    "freego": {
+      "url": "https://ouss.es/p/projects/freego/"
+    },
+    "georize": {
+      "url": "https://ouss.es/p/projects/georize/"
+    },
+    "ijaar": {
+      "url": "https://ouss.es/p/projects/ijaar/"
+    },
+    "kol-pt": {
+      "url": "https://ouss.es/p/projects/kol-pt/",
+      "live": {
+        "url": "https://kol-pt.ouss.es/"
+      }
+    },
+    "langkama": {
+      "url": "https://ouss.es/p/projects/langkama/",
+      "live": {
+        "url": "https://nakamaorg.github.io/langkama-online/"
+      }
+    },
+    "mal-reviewer": {
+      "url": "https://ouss.es/p/projects/mal-reviewer/"
+    },
+    "nitfree": {
+      "url": "https://ouss.es/p/projects/nitfree/",
+      "live": {
+        "url": "https://nitfree.ouss.es/"
+      }
+    },
+    "no-tion": {
+      "url": "https://ouss.es/p/projects/no-tion/",
+      "live": {
+        "url": "https://no-tion.ouss.es"
+      }
+    },
+    "openmp-wiki": {
+      "url": "https://ouss.es/p/projects/openmp-wiki/"
+    },
+    "patho-draft": {
+      "url": "https://ouss.es/p/projects/patho-draft/"
+    },
+    "phoshare": {
+      "url": "https://ouss.es/p/projects/phoshare/",
+      "live": {
+        "url": "https://phoshare.ouss.es/"
+      }
+    },
+    "playback-sync": {
+      "url": "https://ouss.es/p/projects/playback-sync/",
+      "live": {
+        "url": "https://ouss.es/playback-sync/"
+      }
+    },
+    "plus": {
+      "url": "https://ouss.es/p/projects/plus/"
+    },
+    "pockinv": {
+      "url": "https://ouss.es/p/projects/pockinv/",
+      "live": {
+        "url": "https://pockinv.ouss.es/"
+      }
+    },
+    "portfolio": {
+      "url": "https://ouss.es/p/projects/portfolio/",
+      "live": {
+        "url": "https://ouss.es"
+      }
+    },
+    "publi-pro-max": {
+      "url": "https://ouss.es/p/projects/publi-pro-max/",
+      "live": {
+        "url": "https://ouss.es/publi-pro-max/"
+      }
+    },
+    "samadisa": {
+      "url": "https://ouss.es/p/projects/samadisa/",
+      "live": {
+        "url": "https://samadisa.netlify.app/"
+      }
+    },
+    "samp-front": {
+      "url": "https://ouss.es/p/projects/samp-front/"
+    },
+    "sewnique": {
+      "url": "https://ouss.es/p/projects/sewnique/",
+      "live": {
+        "url": "https://sewnique.ouss.es/"
+      }
+    },
+    "steam-mcl": {
+      "url": "https://ouss.es/p/projects/steam-mcl/",
+      "live": {
+        "url": "https://steam-mcl.ouss.es/"
+      }
+    },
+    "student-management": {
+      "url": "https://ouss.es/p/projects/student-management/"
+    },
+    "temmejs": {
+      "url": "https://ouss.es/p/projects/temmejs/",
+      "live": {
+        "url": "https://temmejs.ouss.es/"
+      }
+    },
+    "true-drive": {
+      "url": "https://ouss.es/p/projects/true-drive/"
+    },
+    "umami": {
+      "url": "https://ouss.es/p/projects/umami/"
+    },
+    "vscode-pawn": {
+      "url": "https://ouss.es/p/projects/vscode-pawn/"
+    },
+    "ysi-includes": {
+      "url": "https://ouss.es/p/projects/ysi-includes/"
+    },
+    "yukiments": {
+      "url": "https://ouss.es/p/projects/yukiments/",
+      "live": {
+        "url": "https://yukiments.netlify.app/"
+      }
+    }
   }
 }
