@@ -101,10 +101,11 @@ The script queries the [SQL API](https://developers.cloudflare.com/analytics/ana
 
 [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) deploys every push to `main`:
 
-1. In the Cloudflare dashboard, go to **Workers & Pages** > **Create** > **Import a repository**, and pick this repository.
-2. Set the build command to `pnpm check` and the deploy command to `pnpm run deploy` (a bare `pnpm deploy` is a different, built-in pnpm command). Turn off **Preview builds**. A failing check stops the deploy.
-3. Under **Branch control**, set the production branch to `main`.
-4. The first deploy creates the `to.ouss.es` custom domain (its DNS record and certificate) from [`wrangler.jsonc`](wrangler.jsonc). The analytics dataset is created on its first write.
+1. Once per account, enable Analytics Engine in the Cloudflare dashboard (**Workers & Pages** > **Analytics Engine**). It is free, and without it the deploy fails with error 10089.
+2. Go to **Workers & Pages** > **Create** > **Import a repository**, and pick this repository.
+3. Set the build command to `pnpm check` and the deploy command to `pnpm run deploy` (a bare `pnpm deploy` is a different, built-in pnpm command). Turn off **Preview builds**. A failing check stops the deploy.
+4. Under **Branch control**, set the production branch to `main`.
+5. The first deploy creates the `to.ouss.es` custom domain (its DNS record and certificate) from [`wrangler.jsonc`](wrangler.jsonc). The analytics dataset is created on its first write.
 
 For development, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
