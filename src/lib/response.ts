@@ -1,5 +1,7 @@
 import type { TResolution } from "./types.ts";
 
+import { DAY_SECONDS } from "./time.ts";
+
 
 
 /** The methods the Worker answers; anything else gets a 405. */
@@ -34,4 +36,24 @@ export function redirectResponse(resolution: TResolution): Response {
  */
 export function methodNotAllowed(): Response {
   return new Response(null, { status: 405, headers: { Allow: ALLOWED_METHODS } });
+}
+
+/**
+ * A QR code image for a link. It is cached for a day, or until the link expires if that
+ * comes first.
+ *
+ * @param svg - The QR code
+ * @param slug - The link's slug, for the file name when it is saved
+ * @param secondsLeft - Seconds until the link expires (`Infinity` when it never does)
+ * @returns The image response
+ */
+export function qrResponse(svg: string, slug: string, secondsLeft: number = Number.POSITIVE_INFINITY): Response {
+  return new Response(svg, {
+    headers: {
+      "Content-Type": "image/svg+xml",
+      "Content-Disposition": `inline; filename="to.ouss.es-${slug}.svg"`,
+      "Cache-Control": `public, max-age=${Math.max(0, Math.floor(Math.min(DAY_SECONDS, secondsLeft)))}`,
+      "X-Robots-Tag": "noindex",
+    },
+  });
 }

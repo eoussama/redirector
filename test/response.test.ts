@@ -2,7 +2,7 @@ import type { TResolution, TSlug } from "../src/lib/types.ts";
 
 import { describe, expect, it } from "vitest";
 
-import { ALLOWED_METHODS, methodNotAllowed, redirectResponse } from "../src/lib/response.ts";
+import { ALLOWED_METHODS, methodNotAllowed, qrResponse, redirectResponse } from "../src/lib/response.ts";
 
 
 
@@ -38,5 +38,21 @@ describe("methodNotAllowed", () => {
 
     expect(response.status).toBe(405);
     expect(response.headers.get("Allow")).toBe(ALLOWED_METHODS);
+  });
+});
+
+describe("qrResponse", () => {
+  it("caches the image for a day, or until the link expires if sooner", () => {
+    expect(qrResponse("<svg/>", "cv").headers.get("Cache-Control")).toBe("public, max-age=86400");
+    expect(qrResponse("<svg/>", "cv", 3600.9).headers.get("Cache-Control")).toBe("public, max-age=3600");
+    expect(qrResponse("<svg/>", "cv", -5).headers.get("Cache-Control")).toBe("public, max-age=0");
+  });
+
+  it("serves an SVG that search engines skip, with a file name", () => {
+    const response = qrResponse("<svg/>", "cv");
+
+    expect(response.headers.get("Content-Type")).toBe("image/svg+xml");
+    expect(response.headers.get("X-Robots-Tag")).toBe("noindex");
+    expect(response.headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-cv.svg\"");
   });
 });
