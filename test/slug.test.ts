@@ -21,12 +21,11 @@ describe("normalizeSlug", () => {
     expect(normalizeSlug("/github/redirector")).toBe("github/redirector");
   });
 
-  it("trims long runs of slashes in linear time", () => {
-    const start = performance.now();
-
+  // Timers don't move during synchronous code in workerd, so this can't time itself: a
+  // quadratic trim would instead hold the test for seconds on these inputs.
+  it("trims long runs of slashes", () => {
     expect(normalizeSlug(`/a${"/".repeat(50_000)}b`)).toBe(`a${"/".repeat(50_000)}b`);
     expect(normalizeSlug("/".repeat(50_000))).toBe("");
-    expect(performance.now() - start).toBeLessThan(50);
   });
 
   it("treats encoded slashes like real ones", () => {

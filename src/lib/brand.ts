@@ -10,7 +10,7 @@
  * @param accent - The color of the crescent
  * @returns The SVG elements, to wrap in an `<svg>` with a `0 0 64 64` viewBox
  */
-function logoShapes(ink: string, accent: string): string {
+export function logoShapes(ink: string, accent: string): string {
   return `<clipPath id="clip"><circle cx="32" cy="32" r="31.81"/></clipPath>
   <mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
     <rect width="64" height="64" fill="#fff"/>

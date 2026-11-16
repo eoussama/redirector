@@ -16,7 +16,8 @@ const text = "https://to.ouss.es/github?qr";
 function parse(svg: string): { size: number; logo: { x: number; size: number }; modules: Set<string> } {
   const size = Number(/viewBox="0 0 (\d+) \d+"/.exec(svg)?.[1]);
   const [, x, , width] = /<svg x="([\d.]+)" y="([\d.]+)" width="([\d.]+)"/.exec(svg) ?? [];
-  const modules = new Set([...svg.matchAll(/M(\d+) (\d+)h1v1h-1z/g)].map(([, mx, my]) => `${mx},${my}`));
+  const modules = new Set([...svg.matchAll(/M(\d+) (\d+)h(\d+)v1h-\3z/g)]
+    .flatMap(([, mx, my, run]) => Array.from({ length: Number(run) }, (_, i) => `${Number(mx) + i},${my}`)));
 
   return { size, logo: { x: Number(x), size: Number(width) }, modules };
 }
@@ -78,8 +79,21 @@ describe("qrSvg", () => {
     expect(svg).not.toContain("class=");
   });
 
-  it("stays at version 6 or below for the longest slug, so the logo never covers an alignment pattern", () => {
-    expect(encode(`https://to.ouss.es/${"a".repeat(32)}?qr`, { ecc: "H" }).version).toBeLessThanOrEqual(6);
+  it("never covers a finder or alignment pattern, up to the longest short path", () => {
+    for (let length = 1; length <= 32; length++) {
+      const code = `https://to.ouss.es/${"a".repeat(length)}?qr`;
+      const { version, size } = encode(code, { ecc: "H", border: 4 });
+      const { logo } = parse(qrSvg(code));
+      const padEnd = logo.x + logo.size + 1;
+      // Up to version 6 the one alignment pattern away from the finders is centered 7 modules
+      // in from the bottom-right corner of the code, and spans 2 modules either side.
+      const alignmentStart = size - 4 - 7 - 2;
+      const finderEnd = 4 + 8;
+
+      expect(version).toBeLessThanOrEqual(6);
+      expect(logo.x - 1).toBeGreaterThanOrEqual(finderEnd);
+      expect(padEnd).toBeLessThanOrEqual(alignmentStart);
+    }
   });
 
   it("is the same for the same text", () => {

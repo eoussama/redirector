@@ -30,12 +30,25 @@ export function qrSvg(text: string): string {
   const padEnd = padStart + pad;
   const isUnderPad = (x: number, y: number): boolean => x >= padStart && x < padEnd && y >= padStart && y < padEnd;
 
+  // One rectangle per run of dark modules in a row, which keeps the SVG about half the size
+  // of one square per module.
   let path = "";
 
   for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      if (data[y]![x] && !isUnderPad(x, y)) {
-        path += `M${x} ${y}h1v1h-1z`;
+    let x = 0;
+
+    while (x < size) {
+      const start = x;
+
+      while (x < size && data[y]![x] && !isUnderPad(x, y)) {
+        x++;
+      }
+
+      if (x > start) {
+        path += `M${start} ${y}h${x - start}v1h-${x - start}z`;
+      }
+      else {
+        x++;
       }
     }
   }
