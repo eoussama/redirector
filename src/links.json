@@ -153,6 +153,9 @@
     "ma-java-seed": {
       "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-seed"
     },
+    "swift-todo": {
+      "url": "https://github.com/eoussama/swift-todo"
+    },
     "temmejs": {
       "url": "https://github.com/eoussama/temmejs"
     },
@@ -467,6 +470,15 @@
     },
     "student-management": {
       "url": "https://ouss.es/p/projects/student-management/"
+    },
+    "swift-todo": {
+      "url": "https://ouss.es/p/projects/swift-todo/",
+      "live": {
+        "url": "https://swift-todo.ouss.es/"
+      },
+      "trailer": {
+        "url": "https://youtu.be/Hq2HmWK0GEY"
+      }
     },
     "temmejs": {
       "url": "https://ouss.es/p/projects/temmejs/",
