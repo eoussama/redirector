@@ -265,6 +265,9 @@
       "source": {
         "url": "https://github.com/eoussama/kol-pt"
       },
+      "support": {
+        "url": "https://github.com/eoussama/kol-pt/issues"
+      },
       "chrome": {
         "url": "https://chromewebstore.google.com/detail/okidagidmbimkjlpflhmapogoddlkgkj"
       },
@@ -322,6 +325,9 @@
       },
       "source": {
         "url": "https://github.com/eoussama/nitfree"
+      },
+      "support": {
+        "url": "https://github.com/eoussama/nitfree/issues"
       },
       "dribbble": {
         "url": "https://dribbble.com/shots/27890228-Nitfree"
