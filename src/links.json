@@ -58,258 +58,40 @@
       "url": "https://ko-fi.com/eoussama"
     }
   },
-  "github": {
-    "url": "https://github.com/eoussama",
-    "anusic-api": {
-      "url": "https://github.com/eoussama/anusic-api"
-    },
-    "circus": {
-      "url": "https://github.com/nakamaorg/circus"
-    },
-    "core": {
-      "url": "https://github.com/eoussama/core"
-    },
-    "cybertown": {
-      "url": "https://github.com/eoussama/cybertown"
-    },
-    "dx": {
-      "url": "https://github.com/eoussama/dx"
-    },
-    "eo-house-system": {
-      "url": "https://github.com/eoussama/eo-house-system"
-    },
-    "eo-textdraw-editor": {
-      "url": "https://github.com/eoussama/eo-textdraw-editor"
-    },
-    "eo-translatorjs": {
-      "url": "https://github.com/eoussama/eo-translatorjs"
-    },
-    "eo-typewriterjs": {
-      "url": "https://github.com/eoussama/eo-typewriterjs"
-    },
-    "fireguard": {
-      "url": "https://github.com/eoussama/fireguard"
-    },
-    "firemitt": {
-      "url": "https://github.com/eoussama/firemitt"
-    },
-    "formatex": {
-      "url": "https://github.com/Southclaws/formatex"
-    },
-    "freego": {
-      "url": "https://github.com/eoussama/freego"
-    },
-    "kol-pt": {
-      "url": "https://github.com/eoussama/kol-pt"
-    },
-    "langkama": {
-      "url": "https://github.com/nakamaorg/langkama"
-    },
-    "langkama-online": {
-      "url": "https://github.com/nakamaorg/langkama-online"
-    },
-    "nakama-realm-vscode": {
-      "url": "https://github.com/nakamaorg/nakama-realm-vscode"
-    },
-    "mal-reviewer": {
-      "url": "https://github.com/eoussama/MAL_Reviewer"
-    },
-    "nitfree": {
-      "url": "https://github.com/eoussama/nitfree"
-    },
-    "no-tion": {
-      "url": "https://github.com/eoussama/no-tion"
-    },
-    "openmp-wiki": {
-      "url": "https://github.com/openmultiplayer/wiki"
-    },
-    "phoshare": {
-      "url": "https://github.com/eoussama/phoshare"
-    },
-    "playback-sync": {
-      "url": "https://github.com/eoussama/playback-sync"
-    },
-    "portfolio": {
-      "url": "https://github.com/eoussama/eoussama.github.io"
-    },
-    "publi-pro-max": {
-      "url": "https://github.com/eoussama/publi-pro-max"
-    },
-    "samp-front": {
-      "url": "https://github.com/eoussama/samp-front"
-    },
-    "steam-mcl": {
-      "url": "https://github.com/eoussama/steam-mcl"
-    },
-    "ma-java": {
-      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet"
-    },
-    "ma-java-backend": {
-      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-backend"
-    },
-    "ma-java-frontend": {
-      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-frontend"
-    },
-    "ma-java-seed": {
-      "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-seed"
-    },
-    "swift-todo": {
-      "url": "https://github.com/eoussama/swift-todo"
-    },
-    "temmejs": {
-      "url": "https://github.com/eoussama/temmejs"
-    },
-    "true-drive-core": {
-      "url": "https://github.com/true-drive/core"
-    },
-    "true-drive-cli": {
-      "url": "https://github.com/true-drive/cli"
-    },
-    "umami": {
-      "url": "https://github.com/umami-software/umami"
-    },
-    "vscode-pawn": {
-      "url": "https://github.com/Southclaws/vscode-pawn"
-    },
-    "ysi-includes": {
-      "url": "https://github.com/pawn-lang/YSI-Includes"
+  "(dev)": {
+    "github": {
+      "url": "https://github.com/eoussama"
     }
   },
   "(design)": {
     "dribbble": {
       "url": "https://dribbble.com/EOussama",
-      "dx-logo": {
-        "url": "https://dribbble.com/shots/27890164-DX-Logo"
-      },
-      "ijaar": {
-        "url": "https://dribbble.com/shots/27890248-Ijaar"
-      },
-      "nitfree": {
-        "url": "https://dribbble.com/shots/27890228-Nitfree"
-      },
-      "no-tion": {
-        "url": "https://dribbble.com/shots/27890198-no-tion-Prototype"
-      },
-      "plus": {
-        "url": "https://dribbble.com/shots/27890252-Plus"
-      },
-      "pockinv": {
-        "url": "https://dribbble.com/shots/27890223-PockInv"
-      },
       "eclipse-logo": {
         "url": "https://dribbble.com/shots/27884363-Eclipse-Logo"
       },
       "og-logo": {
         "url": "https://dribbble.com/shots/16578608-Personal-Branding-Logo"
-      },
-      "portfolio": {
-        "url": "https://dribbble.com/shots/23155702-Portfolio"
-      },
-      "portfolio-redesigns": {
-        "url": "https://dribbble.com/shots/27890243-Portfolio-Redesigns"
-      },
-      "sewnique": {
-        "url": "https://dribbble.com/shots/27890233-Sewnique"
       }
     },
     "behance": {
       "url": "https://www.behance.net/eoussama",
-      "dx-logo": {
-        "url": "https://www.behance.net/gallery/258506369/DX-Logo"
-      },
-      "ijaar": {
-        "url": "https://www.behance.net/gallery/258508259/Ijaar"
-      },
-      "nitfree": {
-        "url": "https://www.behance.net/gallery/258507745/Nitfree"
-      },
-      "no-tion": {
-        "url": "https://www.behance.net/gallery/258507537/no-tion-prototype"
-      },
-      "plus": {
-        "url": "https://www.behance.net/gallery/258508373/Plus"
-      },
-      "pockinv": {
-        "url": "https://www.behance.net/gallery/258507655/PockInv"
-      },
       "eclipse-logo": {
         "url": "https://www.behance.net/gallery/258401211/Eclipse-logo"
       },
       "og-logo": {
         "url": "https://www.behance.net/gallery/128615595/Personal-Branding-Logo"
-      },
-      "portfolio": {
-        "url": "https://www.behance.net/gallery/137829029/Portfolio"
-      },
-      "portfolio-redesigns": {
-        "url": "https://www.behance.net/gallery/258508127/Portfolio-Redesigns"
-      },
-      "sewnique": {
-        "url": "https://www.behance.net/gallery/258507931/Sewnique"
       }
     },
     "figma": {
-      "url": "https://www.figma.com/@eoussama",
-      "eo-textdraw-editor": {
-        "url": "https://www.figma.com/board/IP9Oa986G23BlCsVlT0X4x/EO-TextDraw-Editor"
-      },
-      "ijaar": {
-        "url": "https://www.figma.com/design/eO0u5HpUgwPEEJ8XFZ1y7h/Ijjar--Community-?node-id=32-54"
-      },
-      "playback-sync": {
-        "url": "https://www.figma.com/design/1Mbhhrv2ekwrocLJmk2NUA/Playback-Sync?m=auto"
-      },
-      "portfolio": {
-        "url": "https://www.figma.com/design/XziYl1qcWAUZjj1WppDuqI/Portfolio"
-      },
-      "student-management": {
-        "url": "https://www.figma.com/design/qhEHloFlYyr0oUaFrcFRAc/Student-Management"
-      },
-      "yukiments": {
-        "url": "https://www.figma.com/design/FKYubVgKpHHQpWEMZHtrBk/Yukiments"
-      }
-    }
-  },
-  "(packages)": {
-    "npm": {
-      "core": {
-        "url": "https://www.npmjs.com/package/@eoussama/core"
-      },
-      "dx": {
-        "url": "https://www.npmjs.com/package/@eoussama/dx"
-      },
-      "firemitt": {
-        "url": "https://www.npmjs.com/package/@eoussama/firemitt"
-      }
-    },
-    "npmx": {
-      "core": {
-        "url": "https://npmx.dev/package/@eoussama/core"
-      },
-      "dx": {
-        "url": "https://npmx.dev/package/@eoussama/dx"
-      },
-      "firemitt": {
-        "url": "https://npmx.dev/package/@eoussama/firemitt"
-      }
-    },
-    "go": {
-      "freego": {
-        "url": "https://pkg.go.dev/github.com/eoussama/freego"
-      }
-    },
-    "docker": {
-      "true-drive": {
-        "url": "https://hub.docker.com/r/eoussama/true-drive"
-      }
-    },
-    "vscode": {
-      "nakama-realm": {
-        "url": "https://marketplace.visualstudio.com/items?itemName=Eoussama.nakama-realm"
-      }
+      "url": "https://www.figma.com/@eoussama"
     }
   },
   "(projects)": {
+    "anusic-api": {
+      "source": {
+        "url": "https://github.com/eoussama/anusic-api"
+      }
+    },
     "asis": {
       "url": "https://ouss.es/p/projects/asis/"
     },
@@ -317,10 +99,22 @@
       "url": "https://ouss.es/p/projects/circus/",
       "live": {
         "url": "https://nakamaorg.vercel.app/"
+      },
+      "source": {
+        "url": "https://github.com/nakamaorg/circus"
       }
     },
     "core": {
-      "url": "https://ouss.es/p/projects/core/"
+      "url": "https://ouss.es/p/projects/core/",
+      "source": {
+        "url": "https://github.com/eoussama/core"
+      },
+      "npm": {
+        "url": "https://www.npmjs.com/package/@eoussama/core"
+      },
+      "npmx": {
+        "url": "https://npmx.dev/package/@eoussama/core"
+      }
     },
     "crypto-katana": {
       "url": "https://ouss.es/p/projects/crypto-katana/",
@@ -332,29 +126,75 @@
       "url": "https://ouss.es/p/projects/cybertown/",
       "live": {
         "url": "https://cybertown.netlify.app/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/cybertown"
       }
     },
     "dx": {
-      "url": "https://ouss.es/p/projects/dx/"
+      "url": "https://ouss.es/p/projects/dx/",
+      "source": {
+        "url": "https://github.com/eoussama/dx"
+      },
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890164-DX-Logo"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258506369/DX-Logo"
+      },
+      "npm": {
+        "url": "https://www.npmjs.com/package/@eoussama/dx"
+      },
+      "npmx": {
+        "url": "https://npmx.dev/package/@eoussama/dx"
+      }
     },
     "eo-house-system": {
-      "url": "https://ouss.es/p/projects/eo-house-system/"
+      "url": "https://ouss.es/p/projects/eo-house-system/",
+      "source": {
+        "url": "https://github.com/eoussama/eo-house-system"
+      }
     },
     "eo-textdraw-editor": {
+      "url": "https://ouss.es/p/projects/eo-textdraw-editor/",
       "live": {
-        "url": "https://eoussama.github.io/eo-textdraw-editor/"
+        "url": "https://ouss.es/eo-textdraw-editor/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/eo-textdraw-editor"
+      },
+      "figma": {
+        "url": "https://www.figma.com/board/IP9Oa986G23BlCsVlT0X4x/EO-TextDraw-Editor"
       }
     },
     "eo-translatorjs": {
       "url": "https://ouss.es/p/projects/eo-translatorjs/",
       "live": {
         "url": "https://eo-translatorjs.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/eo-translatorjs"
+      },
+      "npm": {
+        "url": "https://www.npmjs.com/package/eo-translatorjs"
+      },
+      "npmx": {
+        "url": "https://npmx.dev/package/eo-translatorjs"
       }
     },
     "eo-typewriterjs": {
       "url": "https://ouss.es/p/projects/eo-typewriterjs/",
       "live": {
         "url": "https://eo-typewriterjs.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/eo-typewriterjs"
+      },
+      "npm": {
+        "url": "https://www.npmjs.com/package/eo-typewriterjs"
+      },
+      "npmx": {
+        "url": "https://npmx.dev/package/eo-typewriterjs"
       }
     },
     "farm-planet": {
@@ -366,50 +206,159 @@
     "fireguard": {
       "url": "https://ouss.es/p/projects/fireguard/",
       "live": {
+        "url": "https://ouss.es/fireguard/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/fireguard"
+      }
+    },
+    "firemitt": {
+      "url": "https://ouss.es/p/projects/fireguard/",
+      "source": {
+        "url": "https://github.com/eoussama/firemitt"
+      },
+      "docs": {
         "url": "https://ouss.es/firemitt/"
+      },
+      "npm": {
+        "url": "https://www.npmjs.com/package/@eoussama/firemitt"
+      },
+      "npmx": {
+        "url": "https://npmx.dev/package/@eoussama/firemitt"
       }
     },
     "formatex": {
-      "url": "https://ouss.es/p/projects/formatex/"
+      "url": "https://ouss.es/p/projects/formatex/",
+      "source": {
+        "url": "https://github.com/Southclaws/formatex"
+      }
     },
     "freego": {
-      "url": "https://ouss.es/p/projects/freego/"
+      "url": "https://ouss.es/p/projects/freego/",
+      "source": {
+        "url": "https://github.com/eoussama/freego"
+      },
+      "pkg": {
+        "url": "https://pkg.go.dev/github.com/eoussama/freego"
+      }
     },
     "georize": {
       "url": "https://ouss.es/p/projects/georize/"
     },
     "ijaar": {
-      "url": "https://ouss.es/p/projects/ijaar/"
+      "url": "https://ouss.es/p/projects/ijaar/",
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890248-Ijaar"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258508259/Ijaar"
+      },
+      "figma": {
+        "url": "https://www.figma.com/design/eO0u5HpUgwPEEJ8XFZ1y7h/Ijjar--Community-?node-id=32-54"
+      }
     },
     "kol-pt": {
       "url": "https://ouss.es/p/projects/kol-pt/",
       "live": {
         "url": "https://kol-pt.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/kol-pt"
+      },
+      "chrome": {
+        "url": "https://chromewebstore.google.com/detail/okidagidmbimkjlpflhmapogoddlkgkj"
+      },
+      "firefox": {
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/kol-patreon-tracker/"
+      },
+      "edge": {
+        "url": "https://microsoftedge.microsoft.com/addons/detail/kol-patreon-tracker/hokjilgdbpbfpeojgofpofdhnefloblo"
       }
     },
     "langkama": {
       "url": "https://ouss.es/p/projects/langkama/",
       "live": {
         "url": "https://nakamaorg.github.io/langkama-online/"
+      },
+      "source": {
+        "url": "https://github.com/nakamaorg/langkama",
+        "online": {
+          "url": "https://github.com/nakamaorg/langkama-online"
+        }
+      }
+    },
+    "ma-java": {
+      "source": {
+        "url": "https://github.com/gomu-gomu/ma-java-avancee-projet",
+        "backend": {
+          "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-backend"
+        },
+        "frontend": {
+          "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-frontend"
+        },
+        "seed": {
+          "url": "https://github.com/gomu-gomu/ma-java-avancee-projet-seed"
+        }
       }
     },
     "mal-reviewer": {
-      "url": "https://ouss.es/p/projects/mal-reviewer/"
+      "url": "https://ouss.es/p/projects/mal-reviewer/",
+      "source": {
+        "url": "https://github.com/eoussama/MAL_Reviewer"
+      }
+    },
+    "nakama-realm": {
+      "source": {
+        "url": "https://github.com/nakamaorg/nakama-realm-vscode"
+      },
+      "vscode": {
+        "url": "https://marketplace.visualstudio.com/items?itemName=Eoussama.nakama-realm"
+      }
     },
     "nitfree": {
       "url": "https://ouss.es/p/projects/nitfree/",
       "live": {
         "url": "https://nitfree.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/nitfree"
+      },
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890228-Nitfree"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258507745/Nitfree"
+      },
+      "chrome": {
+        "url": "https://chromewebstore.google.com/detail/igiloagkgblojnlonfgpnaahdailmlml/"
+      },
+      "firefox": {
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/nitfree/"
+      },
+      "edge": {
+        "url": "https://microsoftedge.microsoft.com/addons/detail/nitfree/bjlbmgkcomhgceijmmahklkipcomdehl"
       }
     },
     "no-tion": {
       "url": "https://ouss.es/p/projects/no-tion/",
       "live": {
         "url": "https://no-tion.ouss.es"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/no-tion"
+      },
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890198-no-tion-Prototype"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258507537/no-tion-prototype"
       }
     },
     "openmp-wiki": {
-      "url": "https://ouss.es/p/projects/openmp-wiki/"
+      "url": "https://ouss.es/p/projects/openmp-wiki/",
+      "source": {
+        "url": "https://github.com/openmultiplayer/wiki"
+      }
     },
     "patho-draft": {
       "url": "https://ouss.es/p/projects/patho-draft/"
@@ -418,33 +367,75 @@
       "url": "https://ouss.es/p/projects/phoshare/",
       "live": {
         "url": "https://phoshare.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/phoshare"
       }
     },
     "playback-sync": {
       "url": "https://ouss.es/p/projects/playback-sync/",
       "live": {
         "url": "https://ouss.es/playback-sync/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/playback-sync"
+      },
+      "figma": {
+        "url": "https://www.figma.com/design/1Mbhhrv2ekwrocLJmk2NUA/Playback-Sync?m=auto"
       }
     },
     "plus": {
-      "url": "https://ouss.es/p/projects/plus/"
+      "url": "https://ouss.es/p/projects/plus/",
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890252-Plus"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258508373/Plus"
+      }
     },
     "pockinv": {
       "url": "https://ouss.es/p/projects/pockinv/",
       "live": {
         "url": "https://pockinv.ouss.es/"
+      },
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890223-PockInv"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258507655/PockInv"
       }
     },
     "portfolio": {
       "url": "https://ouss.es/p/projects/portfolio/",
       "live": {
         "url": "https://ouss.es"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/eoussama.github.io"
+      },
+      "dribbble": {
+        "url": "https://dribbble.com/shots/23155702-Portfolio",
+        "redesigns": {
+          "url": "https://dribbble.com/shots/27890243-Portfolio-Redesigns"
+        }
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/137829029/Portfolio",
+        "redesigns": {
+          "url": "https://www.behance.net/gallery/258508127/Portfolio-Redesigns"
+        }
+      },
+      "figma": {
+        "url": "https://www.figma.com/design/XziYl1qcWAUZjj1WppDuqI/Portfolio"
       }
     },
     "publi-pro-max": {
       "url": "https://ouss.es/p/projects/publi-pro-max/",
       "live": {
         "url": "https://ouss.es/publi-pro-max/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/publi-pro-max"
       }
     },
     "samadisa": {
@@ -454,27 +445,45 @@
       }
     },
     "samp-front": {
-      "url": "https://ouss.es/p/projects/samp-front/"
+      "url": "https://ouss.es/p/projects/samp-front/",
+      "source": {
+        "url": "https://github.com/eoussama/samp-front"
+      }
     },
     "sewnique": {
       "url": "https://ouss.es/p/projects/sewnique/",
       "live": {
         "url": "https://sewnique.ouss.es/"
+      },
+      "dribbble": {
+        "url": "https://dribbble.com/shots/27890233-Sewnique"
+      },
+      "behance": {
+        "url": "https://www.behance.net/gallery/258507931/Sewnique"
       }
     },
     "steam-mcl": {
       "url": "https://ouss.es/p/projects/steam-mcl/",
       "live": {
         "url": "https://steam-mcl.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/steam-mcl"
       }
     },
     "student-management": {
-      "url": "https://ouss.es/p/projects/student-management/"
+      "url": "https://ouss.es/p/projects/student-management/",
+      "figma": {
+        "url": "https://www.figma.com/design/qhEHloFlYyr0oUaFrcFRAc/Student-Management"
+      }
     },
     "swift-todo": {
       "url": "https://ouss.es/p/projects/swift-todo/",
       "live": {
         "url": "https://swift-todo.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/swift-todo"
       },
       "trailer": {
         "url": "https://youtu.be/Hq2HmWK0GEY"
@@ -496,24 +505,57 @@
       "url": "https://ouss.es/p/projects/temmejs/",
       "live": {
         "url": "https://temmejs.ouss.es/"
+      },
+      "source": {
+        "url": "https://github.com/eoussama/temmejs"
+      },
+      "npm": {
+        "url": "https://www.npmjs.com/package/temmejs"
+      },
+      "npmx": {
+        "url": "https://npmx.dev/package/temmejs"
       }
     },
     "true-drive": {
-      "url": "https://ouss.es/p/projects/true-drive/"
+      "url": "https://ouss.es/p/projects/true-drive/",
+      "source": {
+        "url": "https://github.com/true-drive",
+        "core": {
+          "url": "https://github.com/true-drive/core"
+        },
+        "cli": {
+          "url": "https://github.com/true-drive/cli"
+        }
+      },
+      "docker": {
+        "url": "https://hub.docker.com/r/eoussama/true-drive"
+      }
     },
     "umami": {
-      "url": "https://ouss.es/p/projects/umami/"
+      "url": "https://ouss.es/p/projects/umami/",
+      "source": {
+        "url": "https://github.com/umami-software/umami"
+      }
     },
     "vscode-pawn": {
-      "url": "https://ouss.es/p/projects/vscode-pawn/"
+      "url": "https://ouss.es/p/projects/vscode-pawn/",
+      "source": {
+        "url": "https://github.com/Southclaws/vscode-pawn"
+      }
     },
     "ysi-includes": {
-      "url": "https://ouss.es/p/projects/ysi-includes/"
+      "url": "https://ouss.es/p/projects/ysi-includes/",
+      "source": {
+        "url": "https://github.com/pawn-lang/YSI-Includes"
+      }
     },
     "yukiments": {
       "url": "https://ouss.es/p/projects/yukiments/",
       "live": {
         "url": "https://yukiments.netlify.app/"
+      },
+      "figma": {
+        "url": "https://www.figma.com/design/FKYubVgKpHHQpWEMZHtrBk/Yukiments"
       }
     }
   }
