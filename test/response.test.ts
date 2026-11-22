@@ -57,6 +57,6 @@ describe("qrResponse", () => {
   });
 
   it("turns a nested path into a valid file name", () => {
-    expect(qrResponse("<svg/>", "github/core").headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-github-core.svg\"");
+    expect(qrResponse("<svg/>", "core/source").headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-core-source.svg\"");
   });
 });

@@ -70,21 +70,21 @@ describe("validateLinks", () => {
   });
 
   it("nests a link's children into its short path", () => {
-    const links = validateLinks({ github: { url: "https://github.com/eoussama", sewnique: { url: "https://github.com/eoussama/sewnique" } } });
+    const links = validateLinks({ dx: { url: "https://ouss.es/p/projects/dx/", source: { url: "https://github.com/eoussama/dx" } } });
 
-    expect(Object.keys(links)).toEqual(["github", "github/sewnique"]);
+    expect(Object.keys(links)).toEqual(["dx", "dx/source"]);
   });
 
   it("lets a key without a url only hold links, so its own path doesn't exist", () => {
-    expect(Object.keys(validateLinks({ npm: { core: { url: "https://www.npmjs.com/package/@eoussama/core" } } }))).toEqual(["npm/core"]);
+    expect(Object.keys(validateLinks({ "anusic-api": { source: { url: "https://github.com/eoussama/anusic-api" } } }))).toEqual(["anusic-api/source"]);
   });
 
   it("keeps groups out of the short path, at any depth", () => {
     const links = validateLinks({
-      "(design)": { dribbble: { "url": "https://dribbble.com/EOussama", "(shots)": { eclipse: { url: "https://dribbble.com/shots/1-Eclipse" } } } },
+      "(projects)": { dx: { "url": "https://ouss.es/p/projects/dx/", "(design)": { dribbble: { url: "https://dribbble.com/shots/27890164-DX-Logo" } } } },
     });
 
-    expect(Object.keys(links)).toEqual(["dribbble", "dribbble/eclipse"]);
+    expect(Object.keys(links)).toEqual(["dx", "dx/dribbble"]);
   });
 
   it.each([
@@ -92,7 +92,7 @@ describe("validateLinks", () => {
     ["a link at the top level", { url: "https://ouss.es" }, /top level can't be a link/],
     ["the same path twice, through a group", { "cv": { url: "https://ouss.es" }, "(site)": { cv: { url: "https://ouss.es/p/cv/" } } }, /"cv" is defined twice/],
     ["a nested path over 32 characters", { github: { url: "https://github.com", ["a".repeat(26)]: { url: "https://github.com/a" } } }, /at most 32 characters.*is 33/],
-    ["an empty key", { npm: {} }, /Must be a link .* or hold other links/],
+    ["an empty key", { dx: {} }, /Must be a link .* or hold other links/],
     ["a field name used as a key", { github: { url: "https://github.com", subject: { url: "https://github.com/x" } } }, /at github/],
     ["a group name in capitals", { "(Design)": { cv: { url: "https://ouss.es" } } }, /lowercase letters/],
   ])("rejects %s", (_, input, message) => {

@@ -9,10 +9,17 @@ import { validateLinks } from "../src/lib/schema.ts";
 /** Links for these tests, apart from the real links.json, so editing it never breaks them. */
 const links = validateLinks({
   "cv": { url: "https://ouss.es/p/cv/" },
-  "github": { url: "https://github.com/eoussama", core: { url: "https://github.com/eoussama/core" } },
+  "(dev)": { github: { url: "https://github.com/eoussama" } },
   "(design)": { dribbble: { url: "https://dribbble.com/EOussama" } },
-  "npm": { core: { url: "https://www.npmjs.com/package/@eoussama/core" } },
-  "nitfree": { url: "https://ouss.es/p/projects/nitfree/", live: { url: "https://nitfree.ouss.es/" } },
+  "(projects)": {
+    "core": {
+      url: "https://ouss.es/p/projects/core/",
+      source: { url: "https://github.com/eoussama/core" },
+      npm: { url: "https://www.npmjs.com/package/@eoussama/core" },
+    },
+    "anusic-api": { source: { url: "https://github.com/eoussama/anusic-api" } },
+    "nitfree": { url: "https://ouss.es/p/projects/nitfree/", live: { url: "https://nitfree.ouss.es/" } },
+  },
   "home": { url: "https://example.com/", permanent: true },
   "mail": { mailto: "hi@ouss.es", subject: "Hi Oussama" },
   "event": { url: "https://example.com/event", expires: "2026-11-20" },
@@ -51,7 +58,7 @@ describe("handle", () => {
   it.each([
     ["/cv", ["cv", "hit"]],
     ["/cv?qr", ["cv", "scan"]],
-    ["/GitHub/Core/", ["github/core", "hit"]],
+    ["/Core/Source/", ["core/source", "hit"]],
     ["/mail?qr", ["mail", "scan"]],
     ["/nope", ["nope", "miss"]],
     ["/", ["", "root"]],
@@ -100,11 +107,13 @@ describe("handle", () => {
   it("keeps groups out of the URL", () => {
     expect(location("/dribbble")).toBe("https://dribbble.com/EOussama");
     expect(location("/design/dribbble")).toBe("https://ouss.es/404?from=%2Fdesign%2Fdribbble");
+    expect(location("/core/npm")).toBe("https://www.npmjs.com/package/@eoussama/core");
+    expect(location("/projects/core/npm")).toBe("https://ouss.es/404?from=%2Fprojects%2Fcore%2Fnpm");
   });
 
   it("has no link where a key only holds others", () => {
-    expect(location("/npm")).toBe("https://ouss.es/404?from=%2Fnpm");
-    expect(location("/npm/core")).toBe("https://www.npmjs.com/package/@eoussama/core");
+    expect(location("/anusic-api")).toBe("https://ouss.es/404?from=%2Fanusic-api");
+    expect(location("/anusic-api/source")).toBe("https://github.com/eoussama/anusic-api");
   });
 
   it("tags ouss.es targets, with the full path as the campaign", () => {
@@ -174,10 +183,10 @@ describe("handle, for QR codes", () => {
   });
 
   it("serves the QR code of a nested link, a mailto link and a HEAD request", async () => {
-    const nested = call("/github/core.qr").response;
+    const nested = call("/core/source.qr").response;
 
-    expect(nested.headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-github-core.svg\"");
-    expect(await nested.text()).toBe(qrSvg("https://to.ouss.es/github/core?qr"));
+    expect(nested.headers.get("Content-Disposition")).toBe("inline; filename=\"to.ouss.es-core-source.svg\"");
+    expect(await nested.text()).toBe(qrSvg("https://to.ouss.es/core/source?qr"));
     expect(await call("/mail.qr").response.text()).toBe(qrSvg("https://to.ouss.es/mail?qr"));
 
     const head = call("/cv.qr", { method: "HEAD" });

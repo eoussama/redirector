@@ -18,7 +18,7 @@ describe("normalizeSlug", () => {
   });
 
   it("keeps inner slashes, so nested paths never match a slug", () => {
-    expect(normalizeSlug("/github/redirector")).toBe("github/redirector");
+    expect(normalizeSlug("/DX/Source/")).toBe("dx/source");
   });
 
   // Timers don't move during synchronous code in workerd, so this can't time itself: a

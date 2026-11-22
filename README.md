@@ -27,7 +27,7 @@ A personal link redirector: a [Cloudflare Worker](https://developers.cloudflare.
 | Any other path, or an expired link | `302` to `https://ouss.es/404?from=/<slug>` (the portfolio's 404 page shows it as the address asked for) |
 | A method other than `GET` or `HEAD` | `405` |
 
-Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/github?tab=repositories` → `https://github.com/eoussama?tab=repositories`), except the `qr` key, which marks a scan. Nested paths such as `/github/dx` work when `links.json` defines them; any other nested path goes to the 404 page.
+Slugs match case-insensitively, and a trailing slash is ignored (`/GitHub/` is `/github`). A request's query string is passed on to web page targets (`/github?tab=repositories` → `https://github.com/eoussama?tab=repositories`), except the `qr` key, which marks a scan. Nested paths such as `/dx/source` work when `links.json` defines them; any other nested path goes to the 404 page.
 
 Redirects carry `X-Robots-Tag: noindex`, so search engines don't list them. A `302` is sent with `Cache-Control: private, max-age=0`, so a changed link takes effect at once; a `301` is left for browsers to cache. QR code images are cached for a day, or until their link expires if that comes sooner.
 
@@ -44,7 +44,7 @@ Links to ouss.es (and its subdomains) get UTM tags, so the portfolio's analytics
 `src/links.json` is a tree. Each key in it is one of three things:
 
 - **A link field** (`url`, `mailto` and the fields below): the link at that spot.
-- **A child**: lowercase letters, digits and dashes, starting with a letter or digit. It adds a part to the short path, so `github` → `dx` is `to.ouss.es/github/dx`. A key can be a link and hold children at the same time, or only hold children (then its own path has no link).
+- **A child**: lowercase letters, digits and dashes, starting with a letter or digit. It adds a part to the short path, so `dx` → `source` is `to.ouss.es/dx/source`. A key can be a link and hold children at the same time, or only hold children (then its own path has no link).
 - **A group**, in parentheses like `(design)`: it only organizes the file and never appears in the URL, so `(design)` → `dribbble` is still `to.ouss.es/dribbble`.
 
 ```json
@@ -54,24 +54,28 @@ Links to ouss.es (and its subdomains) get UTM tags, so the portfolio's analytics
     "cv": { "url": "https://ouss.es/p/cv/" },
     "talk": { "url": "https://ouss.es/talks/2026", "expires": "2026-12-31" }
   },
-  "github": {
-    "url": "https://github.com/eoussama",
-    "dx": { "url": "https://github.com/eoussama/dx" }
+  "(dev)": {
+    "github": { "url": "https://github.com/eoussama" }
   },
   "(design)": {
-    "dribbble": {
-      "url": "https://dribbble.com/EOussama",
-      "dx-logo": { "url": "https://dribbble.com/shots/27890164-DX-Logo" }
-    }
+    "dribbble": { "url": "https://dribbble.com/EOussama" }
   },
-  "npm": {
-    "dx": { "url": "https://www.npmjs.com/package/@eoussama/dx" }
+  "(projects)": {
+    "dx": {
+      "url": "https://ouss.es/p/projects/dx/",
+      "source": { "url": "https://github.com/eoussama/dx" },
+      "dribbble": { "url": "https://dribbble.com/shots/27890164-DX-Logo" },
+      "npm": { "url": "https://www.npmjs.com/package/@eoussama/dx" }
+    },
+    "anusic-api": {
+      "source": { "url": "https://github.com/eoussama/anusic-api" }
+    }
   },
   "mail": { "mailto": "hi@ouss.es", "subject": "Hi Oussama" }
 }
 ```
 
-That gives `to.ouss.es/cv`, `/talk`, `/github`, `/github/dx`, `/dribbble`, `/dribbble/dx-logo`, `/npm/dx` and `/mail`. `/npm` alone has no link, so it goes to the 404 page. A whole short path can be at most 32 characters (it keeps QR codes small and reliable), and the same path can't be defined twice, even through different groups. Only the paths written in the file exist: `to.ouss.es/github/anything-else` goes to the 404 page.
+That gives `to.ouss.es/cv`, `/talk`, `/github`, `/dribbble`, `/dx`, `/dx/source`, `/dx/dribbble`, `/dx/npm`, `/anusic-api/source` and `/mail`. `/anusic-api` alone has no link, so it goes to the 404 page. A whole short path can be at most 32 characters (it keeps QR codes small and reliable), and the same path can't be defined twice, even through different groups. Only the paths written in the file exist: `to.ouss.es/dx/anything-else` goes to the 404 page.
 
 | Field | Kind | Description |
 | --- | --- | --- |

@@ -43,8 +43,8 @@ export function methodNotAllowed(): Response {
  * comes first.
  *
  * @param svg - The QR code
- * @param slug - The link's short path, for the file name when it is saved (`github/dx`
- *   is saved as `to.ouss.es-github-dx.svg`)
+ * @param slug - The link's short path, for the file name when it is saved (`dx/source`
+ *   is saved as `to.ouss.es-dx-source.svg`)
  * @param secondsLeft - Seconds until the link expires (`Infinity` when it never does)
  * @returns The image response
  */

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Redirector links",
-  "description": "The links served at to.ouss.es. A key extends the short path (github → dx is to.ouss.es/github/dx); a key in parentheses, like (design), only groups.",
+  "description": "The links served at to.ouss.es. A key extends the short path (dx → source is to.ouss.es/dx/source); a key in parentheses, like (design), only groups.",
   "type": "object",
   "properties": {
     "$schema": {

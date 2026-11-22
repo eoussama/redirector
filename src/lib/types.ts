@@ -7,7 +7,7 @@ import type { linkSchema, mailtoLinkSchema } from "./schema.ts";
 
 /**
  * A normalized short path: lowercase, without leading or trailing slashes. Nested links
- * have several parts (`github/dx`).
+ * have several parts (`dx/source`).
  */
 export type TSlug = TBrand<string, "Slug">;
 
@@ -17,7 +17,7 @@ export type TMailtoLink = z.infer<typeof mailtoLinkSchema>;
 /** A link: a web page or a prefilled email. */
 export type TLink = z.infer<typeof linkSchema>;
 
-/** The links, by short path (`cv`, `github/dx`). */
+/** The links, by short path (`cv`, `dx/source`). */
 export type TLinks = Readonly<Record<string, TLink>>;
 
 /**

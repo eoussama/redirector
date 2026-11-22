@@ -13,7 +13,7 @@ const links: TLinks = {
   "mail": { mailto: "hi@ouss.es", subject: "Hi Oussama" },
   "event": { url: "https://example.com/event", expires: "2026-11-20" },
   "launch": { url: "https://example.com/launch", expires: "2026-11-20T18:00:00+01:00" },
-  "github/sewnique": { url: "https://github.com/eoussama/sewnique" },
+  "dx/source": { url: "https://github.com/eoussama/dx" },
 };
 
 /** The portfolio CV's URL with the tags a click adds. */
@@ -61,11 +61,11 @@ describe("resolve", () => {
   });
 
   it("finds nested links, case-insensitively and with a trailing slash", () => {
-    expect(at("/GitHub/Sewnique/")).toMatchObject({ slug: "github/sewnique", outcome: "hit", location: "https://github.com/eoussama/sewnique" });
+    expect(at("/DX/Source/")).toMatchObject({ slug: "dx/source", outcome: "hit", location: "https://github.com/eoussama/dx" });
   });
 
   it("treats nested paths that aren't listed as unknown", () => {
-    expect(at("/github/redirector").location).toBe("https://ouss.es/404?from=%2Fgithub%2Fredirector");
+    expect(at("/dx/docs").location).toBe("https://ouss.es/404?from=%2Fdx%2Fdocs");
   });
 
   it("caps the slug passed on to the 404 page", () => {
