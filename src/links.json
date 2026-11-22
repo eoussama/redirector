@@ -478,6 +478,18 @@
       },
       "trailer": {
         "url": "https://youtu.be/Hq2HmWK0GEY"
+      },
+      "support": {
+        "url": "https://github.com/eoussama/swift-todo/issues"
+      },
+      "chrome": {
+        "url": "https://chromewebstore.google.com/detail/dgajmoohnnllnoehkhapaohcflbnameh/"
+      },
+      "firefox": {
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/swift-todo/"
+      },
+      "edge": {
+        "url": "https://microsoftedge.microsoft.com/addons/detail/emfcnmeffkcecapmhineennjhkljglba"
       }
     },
     "temmejs": {
