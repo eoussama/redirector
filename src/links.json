@@ -14,10 +14,10 @@
       "url": "https://ouss.es/p/rss.xml"
     },
     "posts": {
-      "url": "https://ouss.es/?list=posts"
+      "url": "https://ouss.es/p/posts/"
     },
     "projects": {
-      "url": "https://ouss.es/?list=projects"
+      "url": "https://ouss.es/p/projects/"
     },
     "whoami": {
       "url": "https://ouss.es/#whoami"
